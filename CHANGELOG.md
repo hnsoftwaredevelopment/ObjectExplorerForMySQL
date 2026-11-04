@@ -5,6 +5,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## Unreleased
 
+## 0.6.1 - 2026-11-04
+
+First version on the Visual Studio Marketplace.
+
 ### Added
 
 - Extension icon in *Manage Extensions* and on the Marketplace.
