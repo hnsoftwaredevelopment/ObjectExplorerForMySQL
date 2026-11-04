@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="ObjectExplorerForMySql.hnsoftwaredevelopment" Version="0.5.0" Language="en-US" Publisher="hnsoftwaredevelopment" />
+    <Identity Id="ObjectExplorerForMySql.hnsoftwaredevelopment" Version="0.5.0" Language="en-US" Publisher="Herbert Nijkamp" />
     <DisplayName>Object Explorer for MySQL</DisplayName>
     <Description xml:space="preserve">A MySQL object explorer for Visual Studio, modeled on SQL Server Object Explorer. Browse servers, databases, tables, columns, keys, indexes, triggers, views, routines, events, users and roles, and drag names into your code. Run queries in a MySQL editor with syntax coloring, IntelliSense, execution plans and CSV/JSON export. View and edit table data, script objects or a whole database, see the dependencies of an object, generate database documentation as Markdown or PDF, and watch the sessions of a server in the activity monitor. MySQL 8.0+ and MariaDB. Not affiliated with Oracle Corporation.</Description>
     <MoreInfo>https://github.com/hnsoftwaredevelopment/ObjectExplorerForMySQL</MoreInfo>
@@ -12,15 +12,15 @@
     <Tags>MySQL, MariaDB, database, object explorer, SQL, query editor, IntelliSense, execution plan, documentation</Tags>
   </Metadata>
   <Installation ExtensionType="VSSDK+VisualStudio.Extensibility">
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[18.0,)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[18.0,)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.14,)">
       <ProductArchitecture>arm64</ProductArchitecture>
     </InstallationTarget>
   </Installation>
   <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[18.0,)" DisplayName="Visual Studio core editor" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.14,)" DisplayName="Visual Studio core editor" />
   </Prerequisites>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />

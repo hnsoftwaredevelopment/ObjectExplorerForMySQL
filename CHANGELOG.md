@@ -14,6 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 - The release workflow attaches the VSIX to the GitHub Release only; it no longer uploads a zipped build artifact.
 - The Plan tab of Explain shows costs and row estimates with at most two decimals; the tooltip keeps the exact values.
+- The lowest Visual Studio version is 17.14, because the Marketplace does not accept 18.0 yet. The publisher name is now Herbert Nijkamp, as on the Marketplace.
 
 ## 0.5.0 - 2026-11-04
 

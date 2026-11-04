@@ -158,7 +158,7 @@ These keys only work in the explorer and in the MySQL Query Editor; elsewhere Vi
 
 ## Requirements
 
-- Visual Studio 2026 (version 18.0) or later, Community, Professional or Enterprise, on x64 or Arm64.
+- Visual Studio 2026 or later, Community, Professional or Enterprise, on x64 or Arm64. The extension also installs in Visual Studio 2022 version 17.14 (the Marketplace does not accept 18.0 as the lowest version yet), but it is tested in Visual Studio 2026 only.
 - MySQL 8.0 or later, including 8.4 LTS. MariaDB 10.6 and later works on a best-effort basis.
 - Some features depend on the server: check constraints need MySQL 8.0.16+, *Explain Analyze* MySQL 8.0.18+, and the activity monitor and user management need the matching privileges (PROCESS, CONNECTION_ADMIN, CREATE USER).
 
