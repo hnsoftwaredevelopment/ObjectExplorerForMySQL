@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Toolbar and context menus of the explorer tool window (ADR-011).
+  Texts here are English only; a language is added with a culture-specific copy of this file (see docs/Localization.md).
+  Keep the IDs in sync with Commands/CommandIds.cs.
+-->
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidObjectExplorerPackage">
+
+    <Menus>
+      <Menu guid="guidObjectExplorerCommandSet" id="ExplorerToolbar" type="ToolWindowToolbar">
+        <CommandFlag>DefaultDocked</CommandFlag>
+        <Strings>
+          <ButtonText>Object Explorer for MySQL</ButtonText>
+        </Strings>
+      </Menu>
+
+      <Menu guid="guidObjectExplorerCommandSet" id="NodeContextMenu" type="Context">
+        <Strings>
+          <ButtonText>MySQL Object</ButtonText>
+        </Strings>
+      </Menu>
+
+      <Menu guid="guidObjectExplorerCommandSet" id="ServerContextMenu" type="Context">
+        <Strings>
+          <ButtonText>MySQL Server</ButtonText>
+        </Strings>
+      </Menu>
+
+      <!-- Script As (US-0602): one submenu per statement, each with New Query Window and Clipboard. -->
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptAsMenu" priority="0x0200" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Strings>
+          <ButtonText>&amp;Script As</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptCreateMenu" priority="0x0100" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>CREATE To</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptDropMenu" priority="0x0110" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>DROP To</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptSelectMenu" priority="0x0120" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>SELECT To</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptInsertMenu" priority="0x0130" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>INSERT To</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptUpdateMenu" priority="0x0140" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>UPDATE To</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptDeleteMenu" priority="0x0150" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>DELETE To</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidObjectExplorerCommandSet" id="ScriptCallMenu" priority="0x0160" type="Menu">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" />
+        <Strings>
+          <ButtonText>CALL To</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <Groups>
+      <Group guid="guidObjectExplorerCommandSet" id="ExplorerToolbarConnectionGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ExplorerToolbar" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="ExplorerToolbarRefreshGroup" priority="0x0080">
+        <Parent guid="guidObjectExplorerCommandSet" id="ExplorerToolbar" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="ExplorerToolbarViewGroup" priority="0x0200">
+        <Parent guid="guidObjectExplorerCommandSet" id="ExplorerToolbar" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="NodePropertiesGroup" priority="0x0300">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeContextMenu" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="NodeEditGroup" priority="0x0050">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeContextMenu" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" priority="0x0080">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeContextMenu" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="NodeManageGroup" priority="0x0090">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeContextMenu" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="NodeRefreshGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeContextMenu" />
+      </Group>
+
+      <!-- Execute and Cancel in the context menu of the code window; visible only in the MySQL Query Editor. -->
+      <Group guid="guidObjectExplorerCommandSet" id="QueryEditorGroup" priority="0x0050">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ServerQueryGroup" priority="0x0050">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerContextMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ServerConnectionGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerContextMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ServerEditGroup" priority="0x0200">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerContextMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ServerPropertiesGroup" priority="0x0300">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerContextMenu" />
+      </Group>
+
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptAsGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptAsMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptCreateGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptCreateMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptDropGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptDropMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptSelectGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptSelectMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptInsertGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptInsertMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptUpdateGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptUpdateMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptDeleteGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptDeleteMenu" />
+      </Group>
+      <Group guid="guidObjectExplorerCommandSet" id="ScriptCallGroup" priority="0x0100">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptCallMenu" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <!-- New Query (US-0701): on server nodes here, on database nodes through a placement in NodeCodeGroup. -->
+      <Button guid="guidObjectExplorerCommandSet" id="NewQueryCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerQueryGroup" />
+        <Icon guid="ImageCatalogGuid" id="NewQuery" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New &amp;Query</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="ExecuteQueryCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="QueryEditorGroup" />
+        <Icon guid="ImageCatalogGuid" id="Run" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>E&amp;xecute</ButtonText>
+          <CanonicalName>MySQL.Execute</CanonicalName>
+          <LocCanonicalName>MySQL.Execute</LocCanonicalName>
+        </Strings>
+      </Button>
+      <!-- US-1301: estimated plan of the selection or the statement at the caret. -->
+      <Button guid="guidObjectExplorerCommandSet" id="ExplainQueryCommand" priority="0x0105" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="QueryEditorGroup" />
+        <Icon guid="guidObjectExplorerImages" id="ExplainImage" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Ex&amp;plain</ButtonText>
+          <CanonicalName>MySQL.Explain</CanonicalName>
+          <LocCanonicalName>MySQL.Explain</LocCanonicalName>
+        </Strings>
+      </Button>
+      <!-- US-1302: runs the SELECT and shows the plan with the actual rows and times. No default key; assign one in
+           Tools > Options > Keyboard under the scope MySQL Query Editor. -->
+      <Button guid="guidObjectExplorerCommandSet" id="ExplainAnalyzeQueryCommand" priority="0x0106" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="QueryEditorGroup" />
+        <Icon guid="guidObjectExplorerImages" id="ExplainAnalyzeImage" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Explain &amp;Analyze</ButtonText>
+          <CanonicalName>MySQL.ExplainAnalyze</CanonicalName>
+          <LocCanonicalName>MySQL.ExplainAnalyze</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="CancelQueryCommand" priority="0x0110" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="QueryEditorGroup" />
+        <Icon guid="ImageCatalogGuid" id="Stop" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Cancel &amp;Query</ButtonText>
+          <CanonicalName>MySQL.CancelQuery</CanonicalName>
+          <LocCanonicalName>MySQL.CancelQuery</LocCanonicalName>
+        </Strings>
+      </Button>
+
+      <!-- View Data (US-0801): on tables and views, above View Code. -->
+      <Button guid="guidObjectExplorerCommandSet" id="ViewDataCommand" priority="0x0090" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="DataTable" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>View &amp;Data</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Activity Monitor (US-1501): on server nodes, below New Query. -->
+      <Button guid="guidObjectExplorerCommandSet" id="ActivityMonitorCommand" priority="0x0110" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerQueryGroup" />
+        <Icon guid="ImageCatalogGuid" id="ActivityMonitor" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Activity Monitor</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- View Dependencies (US-1303): on tables, views and routines, below View Code. -->
+      <Button guid="guidObjectExplorerCommandSet" id="ViewDependenciesCommand" priority="0x0110" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="Relationship" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>View De&amp;pendencies</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="ViewCodeCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="Code" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;View Code</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- New Database (US-0903): on the Databases folder, at the top like SSMS. -->
+      <Button guid="guidObjectExplorerCommandSet" id="NewDatabaseCommand" priority="0x0040" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="AddDatabase" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New &amp;Database...</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- New Table, View, ... (US-0904): one command on the object folders; the code sets the text per folder. -->
+      <Button guid="guidObjectExplorerCommandSet" id="NewObjectCommand" priority="0x0040" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="NewItem" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
+        <Strings>
+          <ButtonText>New Object...</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- US-0505: the connection string with a password placeholder; on databases here, on servers through a placement. -->
+      <Button guid="guidObjectExplorerCommandSet" id="CopyConnectionStringCommand" priority="0x0110" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeEditGroup" />
+        <Icon guid="ImageCatalogGuid" id="ConnectionBuilder" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Copy Co&amp;nnection String</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- US-1003: user management, only when the account may manage users. -->
+      <Button guid="guidObjectExplorerCommandSet" id="NewUserCommand" priority="0x0040" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="AddUser" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New &amp;User...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="NewRoleCommand" priority="0x0040" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="AccountGroup" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New &amp;Role...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ChangePasswordCommand" priority="0x0080" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeManageGroup" />
+        <Icon guid="ImageCatalogGuid" id="ChangePassword" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Change &amp;Password...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="GrantOnDatabaseCommand" priority="0x0085" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeManageGroup" />
+        <Icon guid="ImageCatalogGuid" id="Permission" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Grant on Database...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="GrantRoleCommand" priority="0x0086" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeManageGroup" />
+        <Icon guid="ImageCatalogGuid" id="AccountGroup" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Grant R&amp;ole...</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="RevokeCommand" priority="0x0095" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeManageGroup" />
+        <Icon guid="ImageCatalogGuid" id="Cancel" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Re&amp;voke...</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Rename (US-0902): inline edit in the tree, above Delete. -->
+      <Button guid="guidObjectExplorerCommandSet" id="RenameObjectCommand" priority="0x0090" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeManageGroup" />
+        <Icon guid="ImageCatalogGuid" id="Rename" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Rena&amp;me</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Delete (US-0901): own group between the code commands and Refresh. -->
+      <Button guid="guidObjectExplorerCommandSet" id="DeleteObjectCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeManageGroup" />
+        <Icon guid="ImageCatalogGuid" id="Cancel" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>De&amp;lete</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptDatabaseCommand" priority="0x0300" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="Script" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Script &amp;Database...</ButtonText>
+        </Strings>
+      </Button>
+
+      <!-- Generate Documentation (US-1201): on a user database, below Script Database. -->
+      <Button guid="guidObjectExplorerCommandSet" id="GenerateDocumentationCommand" priority="0x0310" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="MarkdownFile" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Generate Documentation...</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="CollapseAllCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ExplorerToolbarViewGroup" />
+        <Icon guid="ImageCatalogGuid" id="CollapseAll" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Collapse All</ButtonText>
+          <ToolTipText>Collapse All</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="AddServerCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ExplorerToolbarConnectionGroup" />
+        <Icon guid="ImageCatalogGuid" id="AddConnection" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Add MySQL Server</ButtonText>
+          <ToolTipText>Add MySQL Server</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="RefreshCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerConnectionGroup" />
+        <Icon guid="ImageCatalogGuid" id="Refresh" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Refresh</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="DisconnectServerCommand" priority="0x0200" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerConnectionGroup" />
+        <Icon guid="ImageCatalogGuid" id="Disconnect" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Disconnect</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="RemoveServerCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerEditGroup" />
+        <Icon guid="ImageCatalogGuid" id="Remove" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Re&amp;move</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="ServerPropertiesCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ServerPropertiesGroup" />
+        <Icon guid="ImageCatalogGuid" id="Property" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>&amp;Properties</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptCreateWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptCreateGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptCreateClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptCreateGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptDropWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptDropGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptDropClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptDropGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptSelectWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptSelectGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptSelectClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptSelectGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptInsertWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptInsertGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptInsertClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptInsertGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptUpdateWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptUpdateGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptUpdateClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptUpdateGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptDeleteWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptDeleteGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptDeleteClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptDeleteGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptCallWindowCommand" priority="0x0100" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptCallGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New Query Window</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidObjectExplorerCommandSet" id="ScriptCallClipboardCommand" priority="0x0101" type="Button">
+        <Parent guid="guidObjectExplorerCommandSet" id="ScriptCallGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Clipboard</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+  </Commands>
+
+  <!-- Refresh also appears on the toolbar and in the context menu of every other node (US-0307). -->
+  <CommandPlacements>
+    <CommandPlacement guid="guidObjectExplorerCommandSet" id="CopyConnectionStringCommand" priority="0x0050">
+      <Parent guid="guidObjectExplorerCommandSet" id="ServerEditGroup" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidObjectExplorerCommandSet" id="NewQueryCommand" priority="0x0050">
+      <Parent guid="guidObjectExplorerCommandSet" id="NodeCodeGroup" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidObjectExplorerCommandSet" id="RefreshCommand" priority="0x0100">
+      <Parent guid="guidObjectExplorerCommandSet" id="ExplorerToolbarRefreshGroup" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidObjectExplorerCommandSet" id="RefreshCommand" priority="0x0100">
+      <Parent guid="guidObjectExplorerCommandSet" id="NodeRefreshGroup" />
+    </CommandPlacement>
+    <!-- Standard Copy (Ctrl+C) in the node menu: copies the object name (US-0501). -->
+    <CommandPlacement guid="guidVSStd97" id="cmdidCopy" priority="0x0100">
+      <Parent guid="guidObjectExplorerCommandSet" id="NodeEditGroup" />
+    </CommandPlacement>
+    <!-- Standard 'Properties Window' (F4) in the node menu, like SQL Server Object Explorer (E04). -->
+    <CommandPlacement guid="guidVSStd97" id="cmdidPropertiesWindow" priority="0x0100">
+      <Parent guid="guidObjectExplorerCommandSet" id="NodePropertiesGroup" />
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <!-- F5 only while the explorer has focus: the tool window is its own key binding scope (ProvideKeyBindingTable
+       on the package, VSFPROPID_InheritKeyBindings on the frame). Elsewhere F5 stays Start Debugging. -->
+  <KeyBindings>
+    <KeyBinding guid="guidObjectExplorerCommandSet" id="RefreshCommand" editor="guidExplorerToolWindow" key1="VK_F5" />
+    <!-- Del in the explorer only (US-0901); the dialog asks before anything runs. -->
+    <KeyBinding guid="guidObjectExplorerCommandSet" id="DeleteObjectCommand" editor="guidExplorerToolWindow" key1="VK_DELETE" />
+    <KeyBinding guid="guidObjectExplorerCommandSet" id="RenameObjectCommand" editor="guidExplorerToolWindow" key1="VK_F2" />
+    <!-- Only in the MySQL Query Editor: its own key binding scope, which inherits the Text Editor bindings (ADR-013).
+         Ctrl+Shift+E elsewhere keeps its own meaning (T-SQL editor, Resource View). -->
+    <KeyBinding guid="guidObjectExplorerCommandSet" id="ExecuteQueryCommand" editor="guidMySqlQueryEditor" key1="E" mod1="Control Shift" />
+    <KeyBinding guid="guidObjectExplorerCommandSet" id="CancelQueryCommand" editor="guidMySqlQueryEditor" key1="VK_CANCEL" mod1="Alt" />
+    <!-- Ctrl+L as Display Estimated Execution Plan in SSMS; in the text editor it would cut the line. -->
+    <KeyBinding guid="guidObjectExplorerCommandSet" id="ExplainQueryCommand" editor="guidMySqlQueryEditor" key1="L" mod1="Control" />
+  </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidObjectExplorerPackage" value="{2f7a445f-2947-4e18-b780-619cebe06f63}" />
+
+    <!-- Tool window GUID (ExplorerToolWindowPane), also the key binding scope. -->
+    <GuidSymbol name="guidExplorerToolWindow" value="{df76e75a-1432-437d-86bc-69df8d28db9e}" />
+
+    <!-- MySQL Query Editor (MySqlEditorFactory), also its key binding scope. -->
+    <GuidSymbol name="guidMySqlQueryEditor" value="{4cc04b32-5bc1-44de-9b86-ba9fbc616303}" />
+
+    <!-- Own images (ObjectExplorerImages.imagemanifest, ObjectExplorerMonikers). -->
+    <GuidSymbol name="guidObjectExplorerImages" value="{8d3c6f5e-2a41-4b7e-9c15-6e0f4a7b3d92}">
+      <IDSymbol name="ExplainImage" value="1" />
+      <IDSymbol name="ExplainAnalyzeImage" value="2" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidObjectExplorerCommandSet" value="{5c3878cd-0686-4593-baad-3fe106df3682}">
+      <IDSymbol name="ExplorerToolbar" value="0x1000" />
+      <IDSymbol name="ExplorerToolbarConnectionGroup" value="0x1100" />
+      <IDSymbol name="ServerContextMenu" value="0x2000" />
+      <IDSymbol name="ServerConnectionGroup" value="0x2100" />
+      <IDSymbol name="ServerEditGroup" value="0x2200" />
+      <IDSymbol name="ServerPropertiesGroup" value="0x2300" />
+      <IDSymbol name="AddServerCommand" value="0x0100" />
+      <IDSymbol name="RefreshCommand" value="0x0200" />
+      <IDSymbol name="ExplorerToolbarRefreshGroup" value="0x1200" />
+      <IDSymbol name="ExplorerToolbarViewGroup" value="0x1300" />
+      <IDSymbol name="CollapseAllCommand" value="0x0204" />
+      <IDSymbol name="NodeContextMenu" value="0x3000" />
+      <IDSymbol name="NodeRefreshGroup" value="0x3100" />
+      <IDSymbol name="NodePropertiesGroup" value="0x3200" />
+      <IDSymbol name="NodeEditGroup" value="0x3050" />
+      <IDSymbol name="NodeCodeGroup" value="0x3080" />
+      <IDSymbol name="ViewCodeCommand" value="0x0205" />
+      <IDSymbol name="ScriptDatabaseCommand" value="0x0206" />
+      <IDSymbol name="NewQueryCommand" value="0x0207" />
+      <IDSymbol name="ServerQueryGroup" value="0x2050" />
+      <IDSymbol name="ExecuteQueryCommand" value="0x0208" />
+      <IDSymbol name="CancelQueryCommand" value="0x0209" />
+      <IDSymbol name="QueryEditorGroup" value="0x5000" />
+      <IDSymbol name="ViewDataCommand" value="0x020A" />
+      <IDSymbol name="DeleteObjectCommand" value="0x020B" />
+      <IDSymbol name="RenameObjectCommand" value="0x020C" />
+      <IDSymbol name="NewDatabaseCommand" value="0x020D" />
+      <IDSymbol name="NewObjectCommand" value="0x020E" />
+      <IDSymbol name="NewUserCommand" value="0x020F" />
+      <IDSymbol name="ChangePasswordCommand" value="0x0210" />
+      <IDSymbol name="GrantOnDatabaseCommand" value="0x0211" />
+      <IDSymbol name="RevokeCommand" value="0x0212" />
+      <IDSymbol name="NewRoleCommand" value="0x0213" />
+      <IDSymbol name="GrantRoleCommand" value="0x0214" />
+      <IDSymbol name="CopyConnectionStringCommand" value="0x0215" />
+      <IDSymbol name="ExplainQueryCommand" value="0x0216" />
+      <IDSymbol name="ExplainAnalyzeQueryCommand" value="0x0217" />
+      <IDSymbol name="ViewDependenciesCommand" value="0x0218" />
+      <IDSymbol name="GenerateDocumentationCommand" value="0x0219" />
+      <IDSymbol name="ActivityMonitorCommand" value="0x021A" />
+      <IDSymbol name="NodeManageGroup" value="0x3090" />
+      <IDSymbol name="ScriptAsMenu" value="0x4000" />
+      <IDSymbol name="ScriptAsGroup" value="0x4001" />
+      <IDSymbol name="ScriptCreateWindowCommand" value="0x0300" />
+      <IDSymbol name="ScriptCreateClipboardCommand" value="0x0301" />
+      <IDSymbol name="ScriptCreateMenu" value="0x4010" />
+      <IDSymbol name="ScriptCreateGroup" value="0x4011" />
+      <IDSymbol name="ScriptDropWindowCommand" value="0x0302" />
+      <IDSymbol name="ScriptDropClipboardCommand" value="0x0303" />
+      <IDSymbol name="ScriptDropMenu" value="0x4020" />
+      <IDSymbol name="ScriptDropGroup" value="0x4021" />
+      <IDSymbol name="ScriptSelectWindowCommand" value="0x0304" />
+      <IDSymbol name="ScriptSelectClipboardCommand" value="0x0305" />
+      <IDSymbol name="ScriptSelectMenu" value="0x4030" />
+      <IDSymbol name="ScriptSelectGroup" value="0x4031" />
+      <IDSymbol name="ScriptInsertWindowCommand" value="0x0306" />
+      <IDSymbol name="ScriptInsertClipboardCommand" value="0x0307" />
+      <IDSymbol name="ScriptInsertMenu" value="0x4040" />
+      <IDSymbol name="ScriptInsertGroup" value="0x4041" />
+      <IDSymbol name="ScriptUpdateWindowCommand" value="0x0308" />
+      <IDSymbol name="ScriptUpdateClipboardCommand" value="0x0309" />
+      <IDSymbol name="ScriptUpdateMenu" value="0x4050" />
+      <IDSymbol name="ScriptUpdateGroup" value="0x4051" />
+      <IDSymbol name="ScriptDeleteWindowCommand" value="0x030A" />
+      <IDSymbol name="ScriptDeleteClipboardCommand" value="0x030B" />
+      <IDSymbol name="ScriptDeleteMenu" value="0x4060" />
+      <IDSymbol name="ScriptDeleteGroup" value="0x4061" />
+      <IDSymbol name="ScriptCallWindowCommand" value="0x030C" />
+      <IDSymbol name="ScriptCallClipboardCommand" value="0x030D" />
+      <IDSymbol name="ScriptCallMenu" value="0x4070" />
+      <IDSymbol name="ScriptCallGroup" value="0x4071" />
+
+      <IDSymbol name="DisconnectServerCommand" value="0x0201" />
+      <IDSymbol name="RemoveServerCommand" value="0x0202" />
+      <IDSymbol name="ServerPropertiesCommand" value="0x0203" />
+    </GuidSymbol>
+  </Symbols>
+
+</CommandTable>

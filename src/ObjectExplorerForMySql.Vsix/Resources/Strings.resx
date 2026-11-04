@@ -1,0 +1,1107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ToolWindowTitle" xml:space="preserve">
+    <value>Object Explorer for MySQL</value>
+  </data>
+  <data name="EmptyExplorerHint" xml:space="preserve">
+    <value>No MySQL servers yet. Click "Add MySQL Server" on the toolbar to add one.</value>
+  </data>
+  <data name="OutputPaneTitle" xml:space="preserve">
+    <value>Object Explorer for MySQL</value>
+  </data>
+  <data name="OpenExplorerFailed" xml:space="preserve">
+    <value>Object Explorer for MySQL could not be opened. See the Output window, pane "Object Explorer for MySQL", for details.</value>
+  </data>
+  <data name="AddServerFailed" xml:space="preserve">
+    <value>The server could not be added. See the Output window, pane "Object Explorer for MySQL", for details.</value>
+  </data>
+  <data name="SaveConnectionsFailed" xml:space="preserve">
+    <value>The server was added, but the connection list could not be saved to {0}. It will be lost when Visual Studio closes. See the Output window, pane "Object Explorer for MySQL", for details.</value>
+  </data>
+  <data name="RemoveServerConfirmation" xml:space="preserve">
+    <value>Remove the connection '{0}' from the explorer?
+
+The saved password is removed as well. The server and its databases are not changed.</value>
+  </data>
+  <data name="EditServerFailed" xml:space="preserve">
+    <value>The connection could not be changed. See the Output window, pane "Object Explorer for MySQL", for details.</value>
+  </data>
+  <data name="ConnectionPropertiesDialogTitle" xml:space="preserve">
+    <value>Connection Properties</value>
+  </data>
+  <data name="ConnectionKeepPasswordHint" xml:space="preserve">
+    <value>Leave empty to keep the current password.</value>
+  </data>
+  <data name="ConnectionDialogTitle" xml:space="preserve">
+    <value>Add MySQL Server</value>
+  </data>
+  <data name="ConnectionName" xml:space="preserve">
+    <value>Connection _name (optional, shown in the explorer):</value>
+  </data>
+  <data name="ConnectionLogOnGroup" xml:space="preserve">
+    <value>Log on to the server</value>
+  </data>
+  <data name="ConnectionHost" xml:space="preserve">
+    <value>_Server host:</value>
+  </data>
+  <data name="ConnectionPort" xml:space="preserve">
+    <value>P_ort:</value>
+  </data>
+  <data name="ConnectionUserName" xml:space="preserve">
+    <value>_User name:</value>
+  </data>
+  <data name="ConnectionPassword" xml:space="preserve">
+    <value>_Password:</value>
+  </data>
+  <data name="ConnectionSavePassword" xml:space="preserve">
+    <value>Sa_ve password</value>
+  </data>
+  <data name="ConnectionDefaultDatabase" xml:space="preserve">
+    <value>Default _database (optional):</value>
+  </data>
+  <data name="ConnectionAdvanced" xml:space="preserve">
+    <value>_Advanced</value>
+  </data>
+  <data name="ConnectionSslMode" xml:space="preserve">
+    <value>SS_L mode:</value>
+  </data>
+  <data name="ConnectionTimeout" xml:space="preserve">
+    <value>Connection _timeout (seconds):</value>
+  </data>
+  <data name="ConnectionAllowPublicKeyRetrieval" xml:space="preserve">
+    <value>Allow public _key retrieval</value>
+  </data>
+  <data name="ConnectionAllowPublicKeyRetrievalHint" xml:space="preserve">
+    <value>Needed for accounts using caching_sha2_password when SSL is off. Lets a man-in-the-middle read the password, so use it only on trusted networks.</value>
+  </data>
+  <data name="ButtonTestConnection" xml:space="preserve">
+    <value>_Test Connection</value>
+  </data>
+  <data name="ButtonOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TestConnectionRunning" xml:space="preserve">
+    <value>Testing connection...</value>
+  </data>
+  <data name="TestConnectionSucceeded" xml:space="preserve">
+    <value>Connected. Server version: {0}.</value>
+  </data>
+  <data name="TestConnectionUnsupportedVersion" xml:space="preserve">
+    <value>Connected, but server version {0} is not supported. The minimum is MySQL 8.0 or MariaDB 10.6.</value>
+  </data>
+  <data name="TestConnectionFailed" xml:space="preserve">
+    <value>Connection failed: {0}</value>
+  </data>
+  <data name="ValidationHostRequired" xml:space="preserve">
+    <value>Enter a server host.</value>
+  </data>
+  <data name="ValidationPortInvalid" xml:space="preserve">
+    <value>The port must be a number between 1 and 65535.</value>
+  </data>
+  <data name="ValidationUserRequired" xml:space="preserve">
+    <value>Enter a user name.</value>
+  </data>
+  <data name="ValidationTimeoutInvalid" xml:space="preserve">
+    <value>The connection timeout must be a number between 1 and 300 seconds.</value>
+  </data>
+  <data name="SslModeNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="SslModePreferred" xml:space="preserve">
+    <value>Preferred</value>
+  </data>
+  <data name="SslModeRequired" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="SslModeVerifyCA" xml:space="preserve">
+    <value>Verify CA</value>
+  </data>
+  <data name="SslModeVerifyFull" xml:space="preserve">
+    <value>Verify full</value>
+  </data>
+  <data name="StateNotConnected" xml:space="preserve">
+    <value>Not connected</value>
+  </data>
+  <data name="StateConnecting" xml:space="preserve">
+    <value>Connecting...</value>
+  </data>
+  <data name="StateConnected" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="StateError" xml:space="preserve">
+    <value>Connection failed</value>
+  </data>
+  <data name="TooltipServer" xml:space="preserve">
+    <value>Server:</value>
+  </data>
+  <data name="TooltipUser" xml:space="preserve">
+    <value>User:</value>
+  </data>
+  <data name="TooltipState" xml:space="preserve">
+    <value>State:</value>
+  </data>
+  <data name="TooltipVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="TooltipLastError" xml:space="preserve">
+    <value>Last error:</value>
+  </data>
+  <data name="PasswordDialogTitle" xml:space="preserve">
+    <value>Connect to MySQL Server</value>
+  </data>
+  <data name="PasswordPromptText" xml:space="preserve">
+    <value>Enter the password for &quot;{0}&quot;.</value>
+  </data>
+  <data name="ButtonConnect" xml:space="preserve">
+    <value>_Connect</value>
+  </data>
+  <data name="NodeLoading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="NodeDatabases" xml:space="preserve">
+    <value>Databases</value>
+  </data>
+  <data name="NodeSystemDatabases" xml:space="preserve">
+    <value>System Databases</value>
+  </data>
+  <data name="NodeTables" xml:space="preserve">
+    <value>Tables</value>
+  </data>
+  <data name="NodeColumns" xml:space="preserve">
+    <value>Columns</value>
+  </data>
+  <data name="NodeKeys" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+  <data name="NodeConstraints" xml:space="preserve">
+    <value>Constraints</value>
+  </data>
+  <data name="NodeTriggers" xml:space="preserve">
+    <value>Triggers</value>
+  </data>
+  <data name="NodeIndexes" xml:space="preserve">
+    <value>Indexes</value>
+  </data>
+  <data name="NodeViews" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="NodeStoredProcedures" xml:space="preserve">
+    <value>Stored Procedures</value>
+  </data>
+  <data name="NodeFunctions" xml:space="preserve">
+    <value>Functions</value>
+  </data>
+  <data name="NodeEvents" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="NodeParameters" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="NodeSecurity" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="NodeUsers" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="NodeRoles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="NodeWithGrantOption" xml:space="preserve">
+    <value>with grant option</value>
+  </data>
+  <data name="NodeFiltered" xml:space="preserve">
+    <value>{0} (filtered)</value>
+    <comment>Folder label while the name filter is active; {0} is the folder name.</comment>
+  </data>
+  <data name="SearchWatermark" xml:space="preserve">
+    <value>Filter tables, views, routines, events and users</value>
+  </data>
+  <data name="ViewCodeFailed" xml:space="preserve">
+    <value>Showing the code of '{0}' failed:
+
+{1}</value>
+    <comment>{0} = database.object, {1} = error message</comment>
+  </data>
+  <data name="ViewCodeNoSource" xml:space="preserve">
+    <value>The server returned no source for '{0}'. The account may not be allowed to see it: the code of a procedure or function is only visible to its definer or with the SHOW_ROUTINE privilege.</value>
+    <comment>{0} = database.object</comment>
+  </data>
+  <data name="ScriptFailed" xml:space="preserve">
+    <value>Generating the {0} script of '{1}' failed:
+
+{2}</value>
+    <comment>{0} = statement (CREATE, INSERT, ...), {1} = database.object, {2} = error message</comment>
+  </data>
+  <data name="ScriptDatabaseTitle" xml:space="preserve">
+    <value>Script Database</value>
+  </data>
+  <data name="ScriptDatabasePrompt" xml:space="preserve">
+    <value>Generate a script that recreates database '{0}' on '{1}': tables, views, procedures, functions, triggers and events.</value>
+    <comment>{0} = database, {1} = connection</comment>
+  </data>
+  <data name="ScriptDatabaseIncludeCreate" xml:space="preserve">
+    <value>Include CREATE _DATABASE and USE</value>
+  </data>
+  <data name="ScriptDatabaseIncludeData" xml:space="preserve">
+    <value>Include _data (all rows of every table)</value>
+  </data>
+  <data name="ScriptDatabaseDataHint" xml:space="preserve">
+    <value>With data the script is about as large as the database. Choose a file for large databases.</value>
+  </data>
+  <data name="ScriptDatabaseOutput" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="ScriptDatabaseToWindow" xml:space="preserve">
+    <value>New query _window</value>
+  </data>
+  <data name="ScriptDatabaseToFile" xml:space="preserve">
+    <value>_File...</value>
+  </data>
+  <data name="ButtonScript" xml:space="preserve">
+    <value>_Script</value>
+  </data>
+  <data name="ScriptDatabaseWaitMessage" xml:space="preserve">
+    <value>Scripting database '{0}'...</value>
+    <comment>{0} = database</comment>
+  </data>
+  <data name="ScriptDatabaseProgress" xml:space="preserve">
+    <value>{0}: {1} ({2} of {3})</value>
+    <comment>{0} = step (Tables, Data, ...), {1} = object, {2} = number, {3} = total</comment>
+  </data>
+  <data name="ScriptDatabaseStepData" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="ScriptDatabaseFileFilter" xml:space="preserve">
+    <value>SQL files (*.sql)|*.sql|All files (*.*)|*.*</value>
+  </data>
+  <data name="ScriptDatabaseSaved" xml:space="preserve">
+    <value>The script of '{0}' is saved to:
+
+{1}</value>
+    <comment>{0} = database, {1} = file path</comment>
+  </data>
+  <data name="ScriptDatabaseMissingSource" xml:space="preserve">
+    <value>The script of '{0}' is incomplete. The server returned no source for:
+
+{1}
+
+The account may not be allowed to see these objects.</value>
+    <comment>{0} = database, {1} = list of objects, one per line</comment>
+  </data>
+  <data name="ScriptDatabaseFailed" xml:space="preserve">
+    <value>Scripting database '{0}' failed:
+
+{1}</value>
+    <comment>{0} = database, {1} = error message</comment>
+  </data>
+  <data name="QueryBarConnection" xml:space="preserve">
+    <value>Connection:</value>
+  </data>
+  <data name="QueryBarDatabase" xml:space="preserve">
+    <value>Database:</value>
+  </data>
+  <data name="QueryBarNoConnection" xml:space="preserve">
+    <value>Choose a connection to run this query.</value>
+  </data>
+  <data name="QueryBarLoading" xml:space="preserve">
+    <value>Loading databases...</value>
+  </data>
+  <data name="NewQueryFailed" xml:space="preserve">
+    <value>The new query could not be opened:
+
+{0}</value>
+    <comment>{0} = error message</comment>
+  </data>
+  <data name="QueryExecuteToolTip" xml:space="preserve">
+    <value>Execute (Ctrl+Shift+E)</value>
+  </data>
+  <data name="QueryExplainToolTip" xml:space="preserve">
+    <value>Explain: estimated plan of the selection or the statement at the cursor (Ctrl+L)</value>
+  </data>
+  <data name="QueryCancelToolTip" xml:space="preserve">
+    <value>Cancel the query (Alt+Break)</value>
+  </data>
+  <data name="QueryResultsTab" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="QueryMessagesTab" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="QueryRunning" xml:space="preserve">
+    <value>Executing query...</value>
+  </data>
+  <data name="QueryClosePane" xml:space="preserve">
+    <value>Close the results</value>
+  </data>
+  <data name="QueryCopy" xml:space="preserve">
+    <value>_Copy</value>
+  </data>
+  <data name="QueryCopyWithHeaders" xml:space="preserve">
+    <value>Copy with _Headers</value>
+  </data>
+  <data name="QueryRowsReturned" xml:space="preserve">
+    <value>{0} row(s) returned.</value>
+    <comment>{0} = number of rows</comment>
+  </data>
+  <data name="QueryRowsTruncated" xml:space="preserve">
+    <value>{0} row(s) returned; the first {1} are shown.</value>
+    <comment>{0} = number of rows, {1} = row limit</comment>
+  </data>
+  <data name="QueryRowsAffected" xml:space="preserve">
+    <value>{0} row(s) affected.</value>
+    <comment>{0} = number of rows</comment>
+  </data>
+  <data name="QueryWarning" xml:space="preserve">
+    <value>{0} {1}: {2}</value>
+    <comment>{0} = Warning or Note, {1} = code, {2} = message</comment>
+  </data>
+  <data name="QueryError" xml:space="preserve">
+    <value>Error {0} at line {1}: {2}</value>
+    <comment>{0} = MySQL error code, {1} = line in the editor, {2} = message</comment>
+  </data>
+  <data name="QueryConnectFailed" xml:space="preserve">
+    <value>Connecting failed: {0}</value>
+    <comment>{0} = error message</comment>
+  </data>
+  <data name="QueryCompleted" xml:space="preserve">
+    <value>{0} statement(s) completed in {1}.</value>
+    <comment>{0} = number of statements, {1} = duration</comment>
+  </data>
+  <data name="QueryFailed" xml:space="preserve">
+    <value>Stopped after an error in {0}.</value>
+    <comment>{0} = duration</comment>
+  </data>
+  <data name="QueryCancelled" xml:space="preserve">
+    <value>Cancelled after {0}.</value>
+    <comment>{0} = duration</comment>
+  </data>
+  <data name="QueryNoConnection" xml:space="preserve">
+    <value>Choose a connection in the bar above the editor.</value>
+  </data>
+  <data name="QueryNothingToRun" xml:space="preserve">
+    <value>There is no statement to run.</value>
+  </data>
+  <data name="QueryNotExplainable" xml:space="preserve">
+    <value>The statement at line {0} has no plan: EXPLAIN supports SELECT, TABLE, WITH, INSERT, UPDATE, DELETE and REPLACE.</value>
+  </data>
+  <data name="QueryPlanReady" xml:space="preserve">
+    <value>Estimated plan of the statement at line {0} in {1}; the statement did not run.</value>
+  </data>
+  <data name="QueryPlanUnreadable" xml:space="preserve">
+    <value>The plan from the server could not be read: {0}</value>
+  </data>
+  <data name="QueryPlanTab" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="PlanQueryBlock" xml:space="preserve">
+    <value>Query block {0}</value>
+  </data>
+  <data name="PlanTable" xml:space="preserve">
+    <value>Table {0}</value>
+  </data>
+  <data name="PlanNestedLoop" xml:space="preserve">
+    <value>Nested loop join</value>
+  </data>
+  <data name="PlanOrderBy" xml:space="preserve">
+    <value>Order by</value>
+  </data>
+  <data name="PlanGroupBy" xml:space="preserve">
+    <value>Group by</value>
+  </data>
+  <data name="PlanDistinct" xml:space="preserve">
+    <value>Remove duplicates</value>
+  </data>
+  <data name="PlanWindowing" xml:space="preserve">
+    <value>Window functions</value>
+  </data>
+  <data name="PlanUnion" xml:space="preserve">
+    <value>Union</value>
+  </data>
+  <data name="PlanSubquery" xml:space="preserve">
+    <value>Subquery</value>
+  </data>
+  <data name="PlanMaterialized" xml:space="preserve">
+    <value>Materialized subquery</value>
+  </data>
+  <data name="PlanFilesort" xml:space="preserve">
+    <value>Filesort</value>
+  </data>
+  <data name="PlanTemporaryTable" xml:space="preserve">
+    <value>Temporary table</value>
+  </data>
+  <data name="PlanCost" xml:space="preserve">
+    <value>cost {0}</value>
+  </data>
+  <data name="PlanKey" xml:space="preserve">
+    <value>key {0}</value>
+  </data>
+  <data name="PlanRows" xml:space="preserve">
+    <value>{0} rows</value>
+  </data>
+  <data name="PlanFullScanWarning" xml:space="preserve">
+    <value>Full table scan: every row is read.</value>
+  </data>
+  <data name="PlanFilesortWarning" xml:space="preserve">
+    <value>Sorts with a filesort.</value>
+  </data>
+  <data name="PlanTemporaryWarning" xml:space="preserve">
+    <value>Builds a temporary table.</value>
+  </data>
+  <data name="QueryNotAnalyzable" xml:space="preserve">
+    <value>Explain Analyze runs the statement, so it only takes a SELECT; the statement at line {0} is not one.</value>
+  </data>
+  <data name="QueryAnalyzeNotSupported" xml:space="preserve">
+    <value>Explain Analyze needs MySQL 8.0.18 or later, or MariaDB; this server is {0}.</value>
+  </data>
+  <data name="QueryPlanAnalyzed" xml:space="preserve">
+    <value>Plan of the statement at line {0} with the actual rows and times, in {1}; the statement ran.</value>
+  </data>
+  <data name="QueryExplainAnalyzeToolTip" xml:space="preserve">
+    <value>Explain Analyze: runs the SELECT and shows the plan with the actual rows and times</value>
+  </data>
+  <data name="PlanActualRows" xml:space="preserve">
+    <value>actual {0} rows</value>
+  </data>
+  <data name="PlanActualTime" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="PlanLoops" xml:space="preserve">
+    <value>{0} loops</value>
+  </data>
+  <data name="PlanNeverExecuted" xml:space="preserve">
+    <value>never executed</value>
+  </data>
+  <data name="PlanEstimateWarning" xml:space="preserve">
+    <value>Estimated {0} rows, actually {1}.</value>
+  </data>
+  <data name="QuerySaveAs" xml:space="preserve">
+    <value>_Save Results As...</value>
+  </data>
+  <data name="QuerySaveTitle" xml:space="preserve">
+    <value>Save Results</value>
+  </data>
+  <data name="QuerySaveFilter" xml:space="preserve">
+    <value>CSV file (*.csv)|*.csv|JSON file (*.json)|*.json</value>
+    <comment>Keep the | separators and the patterns</comment>
+  </data>
+  <data name="QuerySaveTruncated" xml:space="preserve">
+    <value>The result has {0} rows; only the {1} rows shown can be saved. Only a SELECT, SHOW, DESCRIBE or EXPLAIN runs again for all rows, because other statements can change data. Save the rows shown?</value>
+    <comment>{0} = total rows, {1} = rows shown</comment>
+  </data>
+  <data name="QuerySaveRunAgain" xml:space="preserve">
+    <value>The result has {0} rows; the grid shows {1}.
+
+Yes: run the statement again on a new connection and save all rows.
+No: save the {1} rows shown.</value>
+    <comment>{0} = total rows, {1} = rows shown. Yes, No and Cancel are the buttons of the message box.</comment>
+  </data>
+  <data name="QuerySaveAllWait" xml:space="preserve">
+    <value>Running the statement again and saving all rows...</value>
+  </data>
+  <data name="QuerySaveAllProgress" xml:space="preserve">
+    <value>{0} rows saved</value>
+    <comment>{0} = rows saved so far</comment>
+  </data>
+  <data name="QuerySaveAllDone" xml:space="preserve">
+    <value>{0} rows are saved to:
+{1}</value>
+    <comment>{0} = rows, {1} = file</comment>
+  </data>
+  <data name="QuerySaveAllFailed" xml:space="preserve">
+    <value>Running the statement again failed:
+
+{0}
+
+The statement runs on its own connection, so temporary tables and user variables of this query document are not available.</value>
+    <comment>{0} = error</comment>
+  </data>
+  <data name="QuerySaveFailed" xml:space="preserve">
+    <value>Saving the results failed:
+
+{0}</value>
+    <comment>{0} = error message</comment>
+  </data>
+  <data name="ViewDataCaption" xml:space="preserve">
+    <value>{0}.{1} [Data]</value>
+    <comment>{0} = database, {1} = table or view</comment>
+  </data>
+  <data name="ViewDataRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ViewDataFirstPage" xml:space="preserve">
+    <value>First page</value>
+  </data>
+  <data name="ViewDataPreviousPage" xml:space="preserve">
+    <value>Previous page</value>
+  </data>
+  <data name="ViewDataNextPage" xml:space="preserve">
+    <value>Next page</value>
+  </data>
+  <data name="ViewDataLastPage" xml:space="preserve">
+    <value>Last page</value>
+  </data>
+  <data name="ViewDataClearFilters" xml:space="preserve">
+    <value>Clear filters</value>
+  </data>
+  <data name="ViewDataPage" xml:space="preserve">
+    <value>Page {0:N0} of {1:N0}</value>
+    <comment>{0} = page number, {1} = number of pages</comment>
+  </data>
+  <data name="ViewDataPageUnknown" xml:space="preserve">
+    <value>Page {0:N0}</value>
+    <comment>{0} = page number</comment>
+  </data>
+  <data name="ViewDataRows" xml:space="preserve">
+    <value>{0:N0} rows</value>
+    <comment>{0} = number of rows</comment>
+  </data>
+  <data name="ViewDataRowsEstimated" xml:space="preserve">
+    <value>about {0:N0} rows (estimate)</value>
+    <comment>{0} = estimated number of rows</comment>
+  </data>
+  <data name="ViewDataCounting" xml:space="preserve">
+    <value>counting rows...</value>
+  </data>
+  <data name="ViewDataLoading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="ViewDataFilterToolTip" xml:space="preserve">
+    <value>Filter: text = contains, =text = equal, NULL or NOT NULL. Numbers and dates: equal. Press Enter.</value>
+  </data>
+  <data name="DependenciesCaption" xml:space="preserve">
+    <value>MySQL Dependencies</value>
+  </data>
+  <data name="DependenciesFailed" xml:space="preserve">
+    <value>Opening the dependencies of &apos;{0}&apos; failed:
+
+{1}</value>
+    <comment>{0} = database.object, {1} = error message</comment>
+  </data>
+  <data name="DependenciesTitle" xml:space="preserve">
+    <value>{0} {1}.{2}</value>
+    <comment>{0} = kind, {1} = database, {2} = name</comment>
+  </data>
+  <data name="DependenciesUsedBy" xml:space="preserve">
+    <value>Used by ({0})</value>
+  </data>
+  <data name="DependenciesUses" xml:space="preserve">
+    <value>Uses ({0})</value>
+  </data>
+  <data name="DependenciesNone" xml:space="preserve">
+    <value>(none found)</value>
+  </data>
+  <data name="DependenciesForeignKey" xml:space="preserve">
+    <value>foreign key {0}</value>
+  </data>
+  <data name="DependenciesTrigger" xml:space="preserve">
+    <value>trigger on the table</value>
+  </data>
+  <data name="DependenciesSourceText" xml:space="preserve">
+    <value>text match</value>
+  </data>
+  <data name="DependenciesIncomplete" xml:space="preserve">
+    <value>Some sources could not be read with this account, so text matches can be missing.</value>
+  </data>
+  <data name="DependenciesLoading" xml:space="preserve">
+    <value>Reading the dependencies...</value>
+  </data>
+  <data name="DependenciesReadFailed" xml:space="preserve">
+    <value>Reading the dependencies failed: {0}</value>
+  </data>
+  <data name="DocumentationTitle" xml:space="preserve">
+    <value>Generate Documentation</value>
+  </data>
+  <data name="DocumentationPrompt" xml:space="preserve">
+    <value>Generate the documentation of database &apos;{0}&apos; on &apos;{1}&apos;.</value>
+    <comment>{0} = database, {1} = connection</comment>
+  </data>
+  <data name="DocumentationInclude" xml:space="preserve">
+    <value>Include:</value>
+  </data>
+  <data name="DocumentationTables" xml:space="preserve">
+    <value>_Tables, with keys, indexes, check constraints and triggers</value>
+  </data>
+  <data name="DocumentationViews" xml:space="preserve">
+    <value>_Views</value>
+  </data>
+  <data name="DocumentationRoutines" xml:space="preserve">
+    <value>_Procedures and functions</value>
+  </data>
+  <data name="DocumentationEvents" xml:space="preserve">
+    <value>_Events</value>
+  </data>
+  <data name="DocumentationDependencies" xml:space="preserve">
+    <value>_Dependencies per table, view and routine: what uses it and what it uses</value>
+  </data>
+  <data name="DocumentationDiagrams" xml:space="preserve">
+    <value>_With a diagram per object (Mermaid in Markdown, drawn in the PDF)</value>
+  </data>
+  <data name="DocumentationStepDependencies" xml:space="preserve">
+    <value>Dependencies</value>
+  </data>
+  <data name="DocumentationHint" xml:space="preserve">
+    <value>The document is in English and has a table of contents with links. Objects are sorted by name.</value>
+  </data>
+  <data name="ButtonGenerate" xml:space="preserve">
+    <value>_Generate</value>
+  </data>
+  <data name="DocumentationFileFilter" xml:space="preserve">
+    <value>Markdown file (*.md)|*.md|All files (*.*)|*.*</value>
+    <comment>Keep the | separators and the patterns</comment>
+  </data>
+  <data name="DocumentationPdfFileFilter" xml:space="preserve">
+    <value>PDF file (*.pdf)|*.pdf|All files (*.*)|*.*</value>
+    <comment>Keep the | separators and the patterns</comment>
+  </data>
+  <data name="DocumentationFormat" xml:space="preserve">
+    <value>Format:</value>
+  </data>
+  <data name="DocumentationMarkdown" xml:space="preserve">
+    <value>_Markdown (.md), for GitHub, Obsidian and Visual Studio</value>
+  </data>
+  <data name="DocumentationPdf" xml:space="preserve">
+    <value>PD_F (.pdf), with page numbers</value>
+  </data>
+  <data name="DocumentationOpenFailed" xml:space="preserve">
+    <value>The file &apos;{0}&apos; could not be opened: {1}</value>
+    <comment>{0} = file, {1} = error</comment>
+  </data>
+  <data name="DocumentationWaitMessage" xml:space="preserve">
+    <value>Documenting database {0}...</value>
+  </data>
+  <data name="DocumentationProgress" xml:space="preserve">
+    <value>{0}: {1} ({2} of {3})</value>
+    <comment>{0} = part, {1} = object, {2} = current, {3} = total</comment>
+  </data>
+  <data name="DocumentationSaved" xml:space="preserve">
+    <value>The documentation of &apos;{0}&apos; is saved to:
+
+{1}
+
+Open it now?</value>
+    <comment>{0} = database, {1} = file</comment>
+  </data>
+  <data name="DocumentationFailed" xml:space="preserve">
+    <value>Generating the documentation of &apos;{0}&apos; failed:
+
+{1}</value>
+    <comment>{0} = database, {1} = error message</comment>
+  </data>
+  <data name="QuickInfoColumn" xml:space="preserve">
+    <value>column</value>
+  </data>
+  <data name="QuickInfoTable" xml:space="preserve">
+    <value>table</value>
+  </data>
+  <data name="QuickInfoView" xml:space="preserve">
+    <value>view</value>
+  </data>
+  <data name="QuickInfoDatabase" xml:space="preserve">
+    <value>database</value>
+  </data>
+  <data name="QuickInfoPrimaryKey" xml:space="preserve">
+    <value>primary key</value>
+  </data>
+  <data name="QuickInfoForeignKey" xml:space="preserve">
+    <value>foreign key</value>
+  </data>
+  <data name="KindTable" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="KindView" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="KindProcedure" xml:space="preserve">
+    <value>Procedure</value>
+  </data>
+  <data name="KindFunction" xml:space="preserve">
+    <value>Function</value>
+  </data>
+  <data name="KindTrigger" xml:space="preserve">
+    <value>Trigger</value>
+  </data>
+  <data name="KindEvent" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="ViewDataFailed" xml:space="preserve">
+    <value>Opening the data of &apos;{0}&apos; failed:
+
+{1}</value>
+    <comment>{0} = database.table, {1} = error message</comment>
+  </data>
+  <data name="ViewDataAddRow" xml:space="preserve">
+    <value>Add row</value>
+  </data>
+  <data name="ViewDataDeleteRows" xml:space="preserve">
+    <value>Delete selected rows</value>
+  </data>
+  <data name="ViewDataDeleteRowsMenu" xml:space="preserve">
+    <value>_Delete Rows</value>
+  </data>
+  <data name="ViewDataUndoRow" xml:space="preserve">
+    <value>_Undo Changes</value>
+  </data>
+  <data name="ViewDataDeleteConfirm" xml:space="preserve">
+    <value>Delete {0} row(s) from {1}? This cannot be undone.</value>
+    <comment>{0} = number of rows, {1} = database.table</comment>
+  </data>
+  <data name="ViewDataReadOnlyView" xml:space="preserve">
+    <value>Read-only: a view cannot be edited here.</value>
+  </data>
+  <data name="ViewDataReadOnlyNoKey" xml:space="preserve">
+    <value>Read-only: the table has no primary key, so a changed row cannot be found again.</value>
+  </data>
+  <data name="ViewDataRowNotFound" xml:space="preserve">
+    <value>The row was not found. Someone else may have changed or deleted it; refresh to see the current data.</value>
+  </data>
+  <data name="ViewDataDiscardChanges" xml:space="preserve">
+    <value>Some rows have changes that are not saved. Discard them?</value>
+  </data>
+  <data name="DeleteDialogTitle" xml:space="preserve">
+    <value>Delete {0}</value>
+  </data>
+  <data name="DeletePrompt" xml:space="preserve">
+    <value>Delete {0} {1}? This cannot be undone. This SQL runs on the server:</value>
+  </data>
+  <data name="DeleteTypeName" xml:space="preserve">
+    <value>Type the name of the database ({0}) to confirm:</value>
+  </data>
+  <data name="ButtonDelete" xml:space="preserve">
+    <value>_Delete</value>
+  </data>
+  <data name="ButtonCopySql" xml:space="preserve">
+    <value>_Copy SQL</value>
+  </data>
+  <data name="DeleteFailed" xml:space="preserve">
+    <value>Deleting {0} {1} failed:
+
+{2}</value>
+  </data>
+  <data name="DropKindDatabase" xml:space="preserve">
+    <value>database</value>
+  </data>
+  <data name="DropKindTable" xml:space="preserve">
+    <value>table</value>
+  </data>
+  <data name="DropKindView" xml:space="preserve">
+    <value>view</value>
+  </data>
+  <data name="DropKindProcedure" xml:space="preserve">
+    <value>stored procedure</value>
+  </data>
+  <data name="DropKindFunction" xml:space="preserve">
+    <value>function</value>
+  </data>
+  <data name="DropKindTrigger" xml:space="preserve">
+    <value>trigger</value>
+  </data>
+  <data name="DropKindEvent" xml:space="preserve">
+    <value>event</value>
+  </data>
+  <data name="DropKindIndex" xml:space="preserve">
+    <value>index</value>
+  </data>
+  <data name="DropKindColumn" xml:space="preserve">
+    <value>column</value>
+  </data>
+  <data name="DropKindUser" xml:space="preserve">
+    <value>user</value>
+  </data>
+  <data name="DropKindRole" xml:space="preserve">
+    <value>role</value>
+  </data>
+  <data name="NewUserTitle" xml:space="preserve">
+    <value>New User</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangePasswordPrompt" xml:space="preserve">
+    <value>New password for {0}.</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>_User name:</value>
+  </data>
+  <data name="UserHost" xml:space="preserve">
+    <value>_Host:</value>
+  </data>
+  <data name="UserHostHint" xml:space="preserve">
+    <value>% means any host; localhost only allows connections from the server itself.</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>_Password:</value>
+  </data>
+  <data name="UserConfirmPassword" xml:space="preserve">
+    <value>C_onfirm password:</value>
+  </data>
+  <data name="UserExists" xml:space="preserve">
+    <value>An account with this user name and host already exists.</value>
+  </data>
+  <data name="UserPasswordMismatch" xml:space="preserve">
+    <value>The passwords are not the same.</value>
+  </data>
+  <data name="ButtonChange" xml:space="preserve">
+    <value>C_hange</value>
+  </data>
+  <data name="NewUserFailed" xml:space="preserve">
+    <value>Creating user {0} failed:
+
+{1}</value>
+  </data>
+  <data name="ChangePasswordFailed" xml:space="preserve">
+    <value>Changing the password of {0} failed:
+
+{1}</value>
+  </data>
+  <data name="GrantTitle" xml:space="preserve">
+    <value>Grant on Database</value>
+  </data>
+  <data name="GrantPrompt" xml:space="preserve">
+    <value>Privileges for {0} on all objects of one database.</value>
+  </data>
+  <data name="GrantDatabase" xml:space="preserve">
+    <value>_Database:</value>
+  </data>
+  <data name="GrantAll" xml:space="preserve">
+    <value>_All privileges</value>
+  </data>
+  <data name="GrantWithGrantOption" xml:space="preserve">
+    <value>With grant _option (the account may give these privileges to others)</value>
+  </data>
+  <data name="ButtonGrant" xml:space="preserve">
+    <value>_Grant</value>
+  </data>
+  <data name="GrantFailed" xml:space="preserve">
+    <value>Granting to {0} failed:
+
+{1}</value>
+  </data>
+  <data name="GrantLoadFailed" xml:space="preserve">
+    <value>Reading the databases failed:
+
+{0}</value>
+  </data>
+  <data name="NewRoleTitle" xml:space="preserve">
+    <value>New Role</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Role _name:</value>
+  </data>
+  <data name="RoleHostHint" xml:space="preserve">
+    <value>Usually %. Nobody logs in with a role; the host is part of its name.</value>
+  </data>
+  <data name="RoleExists" xml:space="preserve">
+    <value>A user or role with this name already exists.</value>
+  </data>
+  <data name="NewRoleFailed" xml:space="preserve">
+    <value>Creating role {0} failed:
+
+{1}</value>
+  </data>
+  <data name="GrantRoleTitle" xml:space="preserve">
+    <value>Grant Role</value>
+  </data>
+  <data name="GrantRolePrompt" xml:space="preserve">
+    <value>Give {0} the privileges of a role.</value>
+  </data>
+  <data name="GrantRoleRole" xml:space="preserve">
+    <value>_Role:</value>
+  </data>
+  <data name="GrantRoleMakeDefault" xml:space="preserve">
+    <value>Make it a _default role (active right after login)</value>
+  </data>
+  <data name="GrantRoleDefaultsUnknown" xml:space="preserve">
+    <value>The current default roles of this user could not be read; a default role set here replaces them.</value>
+  </data>
+  <data name="GrantRoleNone" xml:space="preserve">
+    <value>{0} already has every role of this server.</value>
+  </data>
+  <data name="GrantRoleFailed" xml:space="preserve">
+    <value>Granting a role to {0} failed:
+
+{1}</value>
+  </data>
+  <data name="RevokeTitle" xml:space="preserve">
+    <value>Revoke</value>
+  </data>
+  <data name="RevokePrompt" xml:space="preserve">
+    <value>Revoke this privilege from {0}? This SQL runs on the server:</value>
+  </data>
+  <data name="ButtonRevoke" xml:space="preserve">
+    <value>_Revoke</value>
+  </data>
+  <data name="RevokeFailed" xml:space="preserve">
+    <value>Revoking from {0} failed:
+
+{1}</value>
+  </data>
+  <data name="RenameNameTooLong" xml:space="preserve">
+    <value>The name is too long. MySQL allows at most {0} characters.</value>
+  </data>
+  <data name="RenameNameEndsWithSpace" xml:space="preserve">
+    <value>The name cannot end with a space.</value>
+  </data>
+  <data name="NewDatabaseTitle" xml:space="preserve">
+    <value>New Database</value>
+  </data>
+  <data name="NewDatabaseName" xml:space="preserve">
+    <value>Database _name:</value>
+  </data>
+  <data name="NewDatabaseCharacterSet" xml:space="preserve">
+    <value>Character _set:</value>
+  </data>
+  <data name="NewDatabaseCollation" xml:space="preserve">
+    <value>C_ollation:</value>
+  </data>
+  <data name="NewDatabaseSql" xml:space="preserve">
+    <value>This SQL runs on the server:</value>
+  </data>
+  <data name="NewDatabaseExists" xml:space="preserve">
+    <value>A database with this name already exists.</value>
+  </data>
+  <data name="ButtonCreate" xml:space="preserve">
+    <value>_Create</value>
+  </data>
+  <data name="NewDatabaseFailed" xml:space="preserve">
+    <value>Creating database {0} failed:
+
+{1}</value>
+  </data>
+  <data name="NewDatabaseLoadFailed" xml:space="preserve">
+    <value>Reading the character sets of '{0}' failed:
+
+{1}</value>
+  </data>
+  <data name="NewObjectTable" xml:space="preserve">
+    <value>New &amp;Table...</value>
+  </data>
+  <data name="NewObjectView" xml:space="preserve">
+    <value>New &amp;View...</value>
+  </data>
+  <data name="NewObjectProcedure" xml:space="preserve">
+    <value>New Stored &amp;Procedure...</value>
+  </data>
+  <data name="NewObjectFunction" xml:space="preserve">
+    <value>New &amp;Function...</value>
+  </data>
+  <data name="NewObjectEvent" xml:space="preserve">
+    <value>New &amp;Event...</value>
+  </data>
+  <data name="NewObjectColumn" xml:space="preserve">
+    <value>New &amp;Column...</value>
+  </data>
+  <data name="NewObjectTrigger" xml:space="preserve">
+    <value>New T&amp;rigger...</value>
+  </data>
+  <data name="NewObjectIndex" xml:space="preserve">
+    <value>New &amp;Index...</value>
+  </data>
+  <data name="NewObjectFailed" xml:space="preserve">
+    <value>Opening the template failed:
+
+{0}</value>
+  </data>
+  <data name="RenameFailed" xml:space="preserve">
+    <value>Renaming {0} {1} to {2} failed:
+
+{3}</value>
+  </data>
+  <data name="ActivityTitle" xml:space="preserve">
+    <value>Activity Monitor</value>
+    <comment>Title of messages of the activity monitor</comment>
+  </data>
+  <data name="ActivityCaption" xml:space="preserve">
+    <value>{0} [Activity]</value>
+    <comment>{0} = connection</comment>
+  </data>
+  <data name="ActivityRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ActivityKillQuery" xml:space="preserve">
+    <value>Kill _Query</value>
+  </data>
+  <data name="ActivityKillQueryPlain" xml:space="preserve">
+    <value>Kill Query</value>
+    <comment>Toolbar button, without access key</comment>
+  </data>
+  <data name="ActivityKillConnection" xml:space="preserve">
+    <value>Kill _Connection</value>
+  </data>
+  <data name="ActivityKillConnectionPlain" xml:space="preserve">
+    <value>Kill Connection</value>
+    <comment>Toolbar button, without access key</comment>
+  </data>
+  <data name="ActivityAutoRefresh" xml:space="preserve">
+    <value>_Auto refresh (5 s)</value>
+  </data>
+  <data name="ActivityHideSleeping" xml:space="preserve">
+    <value>_Hide idle sessions</value>
+    <comment>Sessions with command Sleep</comment>
+  </data>
+  <data name="ActivityCopyStatement" xml:space="preserve">
+    <value>Copy _Statement</value>
+  </data>
+  <data name="ActivityColumnId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="ActivityColumnUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="ActivityColumnHost" xml:space="preserve">
+    <value>Host</value>
+  </data>
+  <data name="ActivityColumnDatabase" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="ActivityColumnCommand" xml:space="preserve">
+    <value>Command</value>
+  </data>
+  <data name="ActivityColumnTime" xml:space="preserve">
+    <value>Time (s)</value>
+  </data>
+  <data name="ActivityColumnState" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="ActivityColumnStatement" xml:space="preserve">
+    <value>Statement</value>
+  </data>
+  <data name="ActivityKillQueryConfirm" xml:space="preserve">
+    <value>Stop the statement of session {0} ({1}) on &apos;{2}&apos;? The session stays open.</value>
+    <comment>{0} = id, {1} = user, {2} = connection</comment>
+  </data>
+  <data name="ActivityKillConnectionConfirm" xml:space="preserve">
+    <value>Close session {0} ({1}) on &apos;{2}&apos;? An open transaction of that session is rolled back.</value>
+    <comment>{0} = id, {1} = user, {2} = connection</comment>
+  </data>
+  <data name="ActivitySummary" xml:space="preserve">
+    <value>{0} sessions, {1} active. Refreshed at {2}.</value>
+    <comment>{0} = sessions shown, {1} = active, {2} = time</comment>
+  </data>
+  <data name="ActivityLoadFailed" xml:space="preserve">
+    <value>Reading the sessions failed: {0}</value>
+    <comment>{0} = error</comment>
+  </data>
+  <data name="ActivityKillFailed" xml:space="preserve">
+    <value>Stopping session {0} failed: {1}</value>
+    <comment>{0} = id, {1} = error</comment>
+  </data>
+  <data name="ActivityOpenFailed" xml:space="preserve">
+    <value>Opening the activity monitor of &apos;{0}&apos; failed: {1}</value>
+    <comment>{0} = connection, {1} = error</comment>
+  </data>
+</root>

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>ObjectExplorerForMySql.Core</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyVersion>2026.11.3.0</AssemblyVersion>
+    <FileVersion>2026.11.3.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MIT license (ADR-002). -->
+    <PackageReference Include="MySqlConnector" Version="2.6.2" />
+    <!-- PDF documentation (US-1202, D-20). Stay on 6.2.x: the last MIT version; 6.5 requires an AGPL or commercial license (D-22). -->
+    <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.4" />
+    <!-- PDFsharp brings 8.0.1, which has known vulnerabilities (GHSA-846f-f764-76mx); 8.0.2 is patched. -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.2" />
+    <!-- DPAPI (ADR-004). Same version as the one Microsoft.VisualStudio.Extensibility already ships in the VSIX. -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="ObjectExplorerForMySql.Core.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Properties window texts (E04); name used by PropertyTexts.ResourceName. -->
+    <EmbeddedResource Update="Resources\PropertyTexts.resx" LogicalName="ObjectExplorerForMySql.Core.Resources.PropertyTexts.resources" />
+  </ItemGroup>
+
+</Project>

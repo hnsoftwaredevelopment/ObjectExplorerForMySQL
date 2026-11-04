@@ -1,0 +1,139 @@
+<!--
+  Uses standard Windows dialog colors (system colors), like Visual Studio's own "Add Connection"
+  dialog, instead of the themed dialog styles (first test round of US-0201: mixed light/dark result).
+-->
+<platformUi:DialogWindow x:Class="ObjectExplorerForMySql.Dialogs.ConnectionDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+                         xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+                         xmlns:res="clr-namespace:ObjectExplorerForMySql.Resources"
+                         xmlns:local="clr-namespace:ObjectExplorerForMySql.Dialogs"
+                         Title="{x:Static res:Strings.ConnectionDialogTitle}"
+                         Width="440"
+                         SizeToContent="Height"
+                         ResizeMode="NoResize"
+                         WindowStartupLocation="CenterOwner"
+                         ShowInTaskbar="False"
+                         HasMinimizeButton="False"
+                         HasMaximizeButton="False"
+                         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                         Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}">
+  <platformUi:DialogWindow.Resources>
+    <local:SslModeTextConverter x:Key="SslModeText" />
+    <Style TargetType="Label">
+      <Setter Property="Padding" Value="0,0,8,0" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="TextBox">
+      <Setter Property="Padding" Value="2,1" />
+    </Style>
+    <Style TargetType="PasswordBox">
+      <Setter Property="Padding" Value="2,1" />
+    </Style>
+    <Style TargetType="Button">
+      <Setter Property="MinWidth" Value="80" />
+      <Setter Property="Padding" Value="10,2" />
+    </Style>
+  </platformUi:DialogWindow.Resources>
+
+  <StackPanel Margin="12">
+
+    <!-- Connection name -->
+    <Label Content="{x:Static res:Strings.ConnectionName}" Target="{Binding ElementName=DisplayNameBox}" Margin="0,0,0,2" />
+    <TextBox x:Name="DisplayNameBox" Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" />
+
+    <!-- Server -->
+    <Grid Margin="0,0,0,10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="12" />
+        <ColumnDefinition Width="70" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Label Content="{x:Static res:Strings.ConnectionHost}" Target="{Binding ElementName=HostBox}" Margin="0,0,0,2" />
+      <TextBox x:Name="HostBox" Grid.Row="1" Text="{Binding Host, UpdateSourceTrigger=PropertyChanged}" />
+      <Label Grid.Column="2" Content="{x:Static res:Strings.ConnectionPort}" Target="{Binding ElementName=PortBox}" Margin="0,0,0,2" />
+      <TextBox x:Name="PortBox" Grid.Row="1" Grid.Column="2" Text="{Binding PortText, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+
+    <!-- Log on -->
+    <GroupBox Header="{x:Static res:Strings.ConnectionLogOnGroup}" Padding="8,6,8,4" Margin="0,0,0,10">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Content="{x:Static res:Strings.ConnectionUserName}" Target="{Binding ElementName=UserBox}" />
+        <TextBox x:Name="UserBox" Grid.Column="1" Margin="0,0,0,6" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
+        <Label Grid.Row="1" Content="{x:Static res:Strings.ConnectionPassword}" Target="{Binding ElementName=PasswordBox}" />
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,6">
+          <PasswordBox x:Name="PasswordBox" PasswordChanged="OnPasswordChanged" />
+          <TextBlock x:Name="KeepPasswordHint" Margin="0,2,0,0" FontStyle="Italic" Visibility="Collapsed"
+                     Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                     Text="{x:Static res:Strings.ConnectionKeepPasswordHint}" />
+        </StackPanel>
+        <CheckBox Grid.Row="2" Grid.Column="1" Content="{x:Static res:Strings.ConnectionSavePassword}" IsChecked="{Binding SavePassword}" />
+      </Grid>
+    </GroupBox>
+
+    <!-- Default database -->
+    <Label Content="{x:Static res:Strings.ConnectionDefaultDatabase}" Target="{Binding ElementName=DatabaseBox}" Margin="0,0,0,2" />
+    <TextBox x:Name="DatabaseBox" Text="{Binding DefaultDatabase, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,8" />
+
+    <!-- Advanced -->
+    <Expander Header="{x:Static res:Strings.ConnectionAdvanced}">
+      <Grid Margin="18,6,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Content="{x:Static res:Strings.ConnectionSslMode}" Target="{Binding ElementName=SslModeBox}" />
+        <ComboBox x:Name="SslModeBox" Grid.Column="1" Margin="0,0,0,6"
+                  ItemsSource="{Binding SslModes}" SelectedItem="{Binding SslMode}">
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Converter={StaticResource SslModeText}}" />
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Grid.Row="1" Content="{x:Static res:Strings.ConnectionTimeout}" Target="{Binding ElementName=TimeoutBox}" />
+        <TextBox x:Name="TimeoutBox" Grid.Row="1" Grid.Column="1" Width="60" HorizontalAlignment="Left" Margin="0,0,0,6"
+                 Text="{Binding TimeoutText, UpdateSourceTrigger=PropertyChanged}" />
+
+        <CheckBox Grid.Row="2" Grid.Column="1" Content="{x:Static res:Strings.ConnectionAllowPublicKeyRetrieval}"
+                  ToolTip="{x:Static res:Strings.ConnectionAllowPublicKeyRetrievalHint}"
+                  IsChecked="{Binding AllowPublicKeyRetrieval}" />
+      </Grid>
+    </Expander>
+
+    <!-- Status of validation and connection test -->
+    <DockPanel x:Name="StatusPanel" Margin="0,12,0,0" Visibility="Collapsed">
+      <imaging:CrispImage x:Name="StatusImage" Width="16" Height="16" VerticalAlignment="Top" Margin="0,1,6,0" />
+      <TextBlock x:Name="StatusText" TextWrapping="Wrap" />
+    </DockPanel>
+
+    <Separator Margin="0,12,0,12" />
+
+    <DockPanel LastChildFill="False">
+      <Button x:Name="TestButton" DockPanel.Dock="Left" Content="{x:Static res:Strings.ButtonTestConnection}" Click="OnTestConnectionClick" />
+      <Button DockPanel.Dock="Right" Margin="6,0,0,0" IsCancel="True" Content="{x:Static res:Strings.ButtonCancel}" />
+      <Button x:Name="OkButton" DockPanel.Dock="Right" IsDefault="True" Content="{x:Static res:Strings.ButtonOk}" Click="OnOkClick" />
+    </DockPanel>
+  </StackPanel>
+</platformUi:DialogWindow>

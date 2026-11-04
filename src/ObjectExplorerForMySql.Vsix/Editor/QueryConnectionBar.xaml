@@ -1,0 +1,82 @@
+<UserControl x:Class="ObjectExplorerForMySql.Editor.QueryConnectionBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vsui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:shell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:res="clr-namespace:ObjectExplorerForMySql.Resources"
+             xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+             xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+             Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarGradientBeginBrushKey}}"
+             Foreground="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarTextActiveBrushKey}}">
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    <Style TargetType="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="BarButton" TargetType="Button">
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Bd" Background="Transparent" Padding="3" Margin="0,0,2,0">
+              <ContentPresenter VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarMouseOverBackgroundBeginBrushKey}}" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Bd" Property="Opacity" Value="0.35" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+
+  <!-- Bar above a query document: Execute and Cancel (US-0703), connection and database (US-0701). -->
+  <StackPanel Orientation="Horizontal" Margin="6,3,6,3">
+    <StackPanel x:Name="RunButtons" Orientation="Horizontal" Margin="0,0,12,0">
+      <Button Style="{StaticResource BarButton}" Focusable="False" Click="OnExecuteClick" IsEnabled="{Binding IsIdle}"
+              ToolTip="{x:Static res:Strings.QueryExecuteToolTip}" AutomationProperties.Name="{x:Static res:Strings.QueryExecuteToolTip}">
+        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Run}" />
+      </Button>
+      <Button Style="{StaticResource BarButton}" Focusable="False" Click="OnExplainClick" IsEnabled="{Binding IsIdle}"
+              ToolTip="{x:Static res:Strings.QueryExplainToolTip}" AutomationProperties.Name="{x:Static res:Strings.QueryExplainToolTip}">
+        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static res:ObjectExplorerMonikers.Explain}" />
+      </Button>
+      <Button Style="{StaticResource BarButton}" Focusable="False" Click="OnExplainAnalyzeClick" IsEnabled="{Binding IsIdle}"
+              ToolTip="{x:Static res:Strings.QueryExplainAnalyzeToolTip}" AutomationProperties.Name="{x:Static res:Strings.QueryExplainAnalyzeToolTip}">
+        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static res:ObjectExplorerMonikers.ExplainAnalyze}" />
+      </Button>
+      <Button Style="{StaticResource BarButton}" Focusable="False" Click="OnCancelClick" IsEnabled="{Binding IsRunning}"
+              ToolTip="{x:Static res:Strings.QueryCancelToolTip}" AutomationProperties.Name="{x:Static res:Strings.QueryCancelToolTip}">
+        <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Stop}" />
+      </Button>
+    </StackPanel>
+    <TextBlock x:Name="ConnectionLabel" Margin="0,0,6,0" Text="{x:Static res:Strings.QueryBarConnection}" />
+    <ComboBox Width="220"
+              Style="{DynamicResource {x:Static shell:VsResourceKeys.ComboBoxStyleKey}}" VerticalAlignment="Center" MinHeight="22"
+              ItemsSource="{Binding Servers}"
+              SelectedItem="{Binding SelectedServer}"
+              DisplayMemberPath="Label"
+              AutomationProperties.LabeledBy="{Binding ElementName=ConnectionLabel}" />
+
+    <TextBlock x:Name="DatabaseLabel" Margin="14,0,6,0" Text="{x:Static res:Strings.QueryBarDatabase}" />
+    <ComboBox Width="180"
+              Style="{DynamicResource {x:Static shell:VsResourceKeys.ComboBoxStyleKey}}" VerticalAlignment="Center" MinHeight="22"
+              ItemsSource="{Binding Databases}"
+              SelectedItem="{Binding SelectedDatabase}"
+              IsEnabled="{Binding HasServer}"
+              DropDownOpened="OnDatabaseDropDownOpened"
+              AutomationProperties.LabeledBy="{Binding ElementName=DatabaseLabel}" />
+
+    <TextBlock Margin="14,0,0,0" Text="{x:Static res:Strings.QueryBarNoConnection}"
+               Visibility="{Binding HasNoServer, Converter={StaticResource BoolToVisibility}}" />
+    <TextBlock Margin="14,0,0,0" Text="{x:Static res:Strings.QueryBarLoading}"
+               Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" />
+    <TextBlock Margin="14,0,0,0" MaxWidth="500" TextTrimming="CharacterEllipsis"
+               Text="{Binding Error}" ToolTip="{Binding Error}"
+               Visibility="{Binding HasError, Converter={StaticResource BoolToVisibility}}" />
+  </StackPanel>
+</UserControl>

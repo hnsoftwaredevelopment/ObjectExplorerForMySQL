@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ObjectExplorerForMySql.Core/ObjectExplorerForMySql.Core.csproj" />
+    <Project Path="src/ObjectExplorerForMySql.Vsix/ObjectExplorerForMySql.Vsix.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ObjectExplorerForMySql.Core.Tests/ObjectExplorerForMySql.Core.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,207 @@
+<UserControl x:Class="ObjectExplorerForMySql.Data.TableDataControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vsui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:res="clr-namespace:ObjectExplorerForMySql.Resources"
+             xmlns:local="clr-namespace:ObjectExplorerForMySql.Data"
+             xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+             xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+             Background="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+             Foreground="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowTextBrushKey}}">
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    <Style x:Key="BarButton" TargetType="Button">
+      <Setter Property="Focusable" Value="False" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Bd" Background="Transparent" Padding="3" Margin="0,0,2,0">
+              <ContentPresenter VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarMouseOverBackgroundBeginBrushKey}}" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Bd" Property="Opacity" Value="0.35" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style TargetType="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Paging glyphs as one set (|< < > >|) in the text color of the theme, so they match each other. -->
+    <Style x:Key="PageGlyph" TargetType="Path">
+      <Setter Property="Width" Value="16" />
+      <Setter Property="Height" Value="16" />
+      <Setter Property="Stretch" Value="None" />
+      <Setter Property="Fill" Value="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarTextActiveBrushKey}}" />
+    </Style>
+
+    <!-- Used by the grid columns that TableDataControl.xaml.cs builds. -->
+    <Style x:Key="GridHeader" TargetType="DataGridColumnHeader">
+      <Setter Property="Background" Value="{DynamicResource {x:Static vsui:HeaderColors.DefaultBrushKey}}" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:HeaderColors.DefaultTextBrushKey}}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}" />
+      <Setter Property="BorderThickness" Value="0,0,1,1" />
+      <Setter Property="Padding" Value="4,2" />
+      <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+      <Setter Property="VerticalContentAlignment" Value="Top" />
+    </Style>
+    <Style x:Key="GridRowHeader" TargetType="DataGridRowHeader">
+      <Setter Property="Background" Value="{DynamicResource {x:Static vsui:HeaderColors.DefaultBrushKey}}" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:HeaderColors.DefaultTextBrushKey}}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}" />
+      <Setter Property="BorderThickness" Value="0,0,1,1" />
+      <Setter Property="Width" Value="18" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+    <!-- Error colors (US-0802): a red tint that reads in the light and the dark themes. -->
+    <SolidColorBrush x:Key="ErrorRowBrush" Color="#38E81123" />
+    <SolidColorBrush x:Key="ErrorCellBrush" Color="#90E81123" />
+    <SolidColorBrush x:Key="ErrorBorderBrush" Color="#FFE81123" />
+    <local:ErrorCellConverter x:Key="ErrorCell" />
+
+    <Style x:Key="GridRow" TargetType="DataGridRow">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding HasError}" Value="True">
+          <Setter Property="Background" Value="{StaticResource ErrorRowBrush}" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="GridCell" TargetType="DataGridCell">
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="4,1" />
+      <Style.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter Property="Background" Value="{DynamicResource {x:Static vsui:TreeViewColors.SelectedItemActiveBrushKey}}" />
+          <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:TreeViewColors.SelectedItemActiveTextBrushKey}}" />
+        </Trigger>
+        <!-- The cell the server error is about: red with a red border and the message as tooltip, also when selected. -->
+        <DataTrigger Value="True">
+          <DataTrigger.Binding>
+            <MultiBinding Converter="{StaticResource ErrorCell}">
+              <Binding Path="ErrorColumn" />
+              <Binding Path="Column.SortMemberPath" RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
+          </DataTrigger.Binding>
+          <Setter Property="Background" Value="{StaticResource ErrorCellBrush}" />
+          <Setter Property="BorderBrush" Value="{StaticResource ErrorBorderBrush}" />
+          <Setter Property="BorderThickness" Value="1" />
+          <Setter Property="ToolTip" Value="{Binding Error}" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="FilterBox" TargetType="TextBox" BasedOn="{x:Null}">
+      <Setter Property="Margin" Value="0,3,0,1" />
+      <Setter Property="MinWidth" Value="40" />
+      <Setter Property="Background" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxBackgroundBrushKey}}" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxTextBrushKey}}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxBorderBrushKey}}" />
+      <Setter Property="CaretBrush" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxTextBrushKey}}" />
+      <Setter Property="ToolTip" Value="{x:Static res:Strings.ViewDataFilterToolTip}" />
+    </Style>
+    <!-- Text box of a cell in edit mode (US-0802). -->
+    <Style x:Key="CellEditor" TargetType="TextBox" BasedOn="{x:Null}">
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="2,0" />
+      <Setter Property="Background" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxBackgroundBrushKey}}" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxTextBrushKey}}" />
+      <Setter Property="CaretBrush" Value="{DynamicResource {x:Static vsui:EnvironmentColors.ComboBoxTextBrushKey}}" />
+    </Style>
+  </UserControl.Resources>
+
+  <!-- View Data (US-0801) and Edit Data (US-0802): toolbar, notice, grid with sort, filter row and editing. -->
+  <DockPanel>
+    <DockPanel DockPanel.Dock="Top" Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarGradientBeginBrushKey}}">
+      <StackPanel Orientation="Horizontal" Margin="4,3">
+        <Button Style="{StaticResource BarButton}" Click="OnRefresh" ToolTip="{x:Static res:Strings.ViewDataRefresh}" AutomationProperties.Name="{x:Static res:Strings.ViewDataRefresh}">
+          <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Refresh}" />
+        </Button>
+        <Button Style="{StaticResource BarButton}" Click="OnClearFilters" ToolTip="{x:Static res:Strings.ViewDataClearFilters}" AutomationProperties.Name="{x:Static res:Strings.ViewDataClearFilters}">
+          <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.DeleteFilter}" />
+        </Button>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding CanEdit, Converter={StaticResource BoolToVisibility}}">
+          <Border Width="1" Margin="6,2" Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarToolBarSeparatorBrushKey}}" />
+          <Button Style="{StaticResource BarButton}" Click="OnAddRow" ToolTip="{x:Static res:Strings.ViewDataAddRow}" AutomationProperties.Name="{x:Static res:Strings.ViewDataAddRow}">
+            <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.AddRow}" />
+          </Button>
+          <Button Style="{StaticResource BarButton}" Click="OnDeleteRows" ToolTip="{x:Static res:Strings.ViewDataDeleteRows}" AutomationProperties.Name="{x:Static res:Strings.ViewDataDeleteRows}">
+            <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.DeleteTableRow}" />
+          </Button>
+        </StackPanel>
+        <Border Width="1" Margin="6,2" Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarToolBarSeparatorBrushKey}}" />
+        <Button Style="{StaticResource BarButton}" Click="OnFirstPage" IsEnabled="{Binding CanGoBack}" ToolTip="{x:Static res:Strings.ViewDataFirstPage}" AutomationProperties.Name="{x:Static res:Strings.ViewDataFirstPage}">
+          <Path Style="{StaticResource PageGlyph}" Data="M3,3 H5 V13 H3 Z M13,3 V13 L6,8 Z" />
+        </Button>
+        <Button Style="{StaticResource BarButton}" Click="OnPreviousPage" IsEnabled="{Binding CanGoBack}" ToolTip="{x:Static res:Strings.ViewDataPreviousPage}" AutomationProperties.Name="{x:Static res:Strings.ViewDataPreviousPage}">
+          <Path Style="{StaticResource PageGlyph}" Data="M11,3 V13 L4,8 Z" />
+        </Button>
+        <TextBlock x:Name="PageText" Margin="6,0" MinWidth="90" TextAlignment="Center" />
+        <Button Style="{StaticResource BarButton}" Click="OnNextPage" IsEnabled="{Binding CanGoForward}" ToolTip="{x:Static res:Strings.ViewDataNextPage}" AutomationProperties.Name="{x:Static res:Strings.ViewDataNextPage}">
+          <Path Style="{StaticResource PageGlyph}" Data="M5,3 V13 L12,8 Z" />
+        </Button>
+        <Button Style="{StaticResource BarButton}" Click="OnLastPage" IsEnabled="{Binding CanGoToLast}" ToolTip="{x:Static res:Strings.ViewDataLastPage}" AutomationProperties.Name="{x:Static res:Strings.ViewDataLastPage}">
+          <Path Style="{StaticResource PageGlyph}" Data="M3,3 V13 L10,8 Z M11,3 H13 V13 H11 Z" />
+        </Button>
+        <TextBlock x:Name="RowsText" Margin="12,0,0,0" />
+        <TextBlock Margin="12,0,0,0" Text="{x:Static res:Strings.ViewDataLoading}"
+                   Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibility}}" />
+        <TextBlock x:Name="ReadOnlyText" Margin="12,0,0,0" />
+      </StackPanel>
+    </DockPanel>
+
+    <TextBlock DockPanel.Dock="Top" Margin="8,4" TextWrapping="Wrap" Text="{Binding Error}"
+               Visibility="{Binding HasError, Converter={StaticResource BoolToVisibility}}" />
+
+    <DataGrid x:Name="Grid"
+              AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
+              CanUserSortColumns="True" CanUserReorderColumns="True" CanUserResizeColumns="True"
+              SelectionMode="Extended" SelectionUnit="CellOrRowHeader" HeadersVisibility="All" GridLinesVisibility="All"
+              EnableRowVirtualization="True" EnableColumnVirtualization="True" VirtualizingPanel.VirtualizationMode="Recycling"
+              BorderThickness="0"
+              ColumnHeaderStyle="{StaticResource GridHeader}" RowHeaderStyle="{StaticResource GridRowHeader}" CellStyle="{StaticResource GridCell}"
+              RowStyle="{StaticResource GridRow}"
+              Background="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+              RowBackground="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+              Foreground="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowTextBrushKey}}"
+              HorizontalGridLinesBrush="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}"
+              VerticalGridLinesBrush="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}"
+              ItemsSource="{Binding Rows}"
+              Sorting="OnSorting"
+              CellEditEnding="OnCellEditEnding"
+              RowEditEnding="OnRowEditEnding">
+      <!-- Row header: ! with the error as tooltip, * for unsaved changes, + for a new row (US-0802). -->
+      <DataGrid.RowHeaderTemplate>
+        <DataTemplate>
+          <TextBlock FontWeight="Bold" HorizontalAlignment="Center"
+                     DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=DataGridRow}}"
+                     Text="{Binding Marker}" ToolTip="{Binding Error}">
+            <TextBlock.Style>
+              <Style TargetType="TextBlock">
+                <Style.Triggers>
+                  <DataTrigger Binding="{Binding HasError}" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource ErrorBorderBrush}" />
+                  </DataTrigger>
+                </Style.Triggers>
+              </Style>
+            </TextBlock.Style>
+          </TextBlock>
+        </DataTemplate>
+      </DataGrid.RowHeaderTemplate>
+      <DataGrid.ContextMenu>
+        <ContextMenu>
+          <MenuItem Header="{x:Static res:Strings.QueryCopy}" Click="OnCopy" />
+          <MenuItem Header="{x:Static res:Strings.QueryCopyWithHeaders}" Click="OnCopyWithHeaders" />
+          <Separator x:Name="EditSeparator" />
+          <MenuItem x:Name="UndoMenuItem" Header="{x:Static res:Strings.ViewDataUndoRow}" Click="OnUndoRow" />
+          <MenuItem x:Name="DeleteMenuItem" Header="{x:Static res:Strings.ViewDataDeleteRowsMenu}" Click="OnDeleteRows" />
+        </ContextMenu>
+      </DataGrid.ContextMenu>
+    </DataGrid>
+  </DockPanel>
+</UserControl>

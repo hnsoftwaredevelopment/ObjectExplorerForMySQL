@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json.schemastore.org/vsix-publish",
+  "categories": ["data", "coding"],
+  "identity": {
+    "internalName": "ObjectExplorerForMySQL"
+  },
+  "overview": "README.md",
+  "priceCategory": "free",
+  "publisher": "hnsoftwaredevelopment",
+  "private": false,
+  "qna": true,
+  "repo": "https://github.com/hnsoftwaredevelopment/ObjectExplorerForMySQL",
+  "assetFiles": [
+    { "pathOnDisk": "docs/AppIcon.png", "targetPath": "docs/AppIcon.png" },
+    { "pathOnDisk": "docs/images/explorer.png", "targetPath": "docs/images/explorer.png" },
+    { "pathOnDisk": "docs/images/query-editor.png", "targetPath": "docs/images/query-editor.png" },
+    { "pathOnDisk": "docs/images/explain-plan.png", "targetPath": "docs/images/explain-plan.png" },
+    { "pathOnDisk": "docs/images/view-data.png", "targetPath": "docs/images/view-data.png" },
+    { "pathOnDisk": "docs/images/pdf-documentation.png", "targetPath": "docs/images/pdf-documentation.png" },
+    { "pathOnDisk": "docs/images/activity-monitor.png", "targetPath": "docs/images/activity-monitor.png" }
+  ]
+}

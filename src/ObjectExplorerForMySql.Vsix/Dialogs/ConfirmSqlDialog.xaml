@@ -1,0 +1,36 @@
+<platformUi:DialogWindow x:Class="ObjectExplorerForMySql.Dialogs.ConfirmSqlDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+                         xmlns:res="clr-namespace:ObjectExplorerForMySql.Resources"
+                         Width="520"
+                         SizeToContent="Height"
+                         ResizeMode="NoResize"
+                         WindowStartupLocation="CenterOwner"
+                         ShowInTaskbar="False"
+                         HasMinimizeButton="False"
+                         HasMaximizeButton="False"
+                         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                         Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}">
+  <platformUi:DialogWindow.Resources>
+    <Style TargetType="Button">
+      <Setter Property="MinWidth" Value="80" />
+      <Setter Property="Padding" Value="10,2" />
+    </Style>
+  </platformUi:DialogWindow.Resources>
+
+  <!-- A question with the exact SQL (US-1003 Revoke); Cancel is the default, as in the Delete dialog. -->
+  <StackPanel Margin="12">
+    <TextBlock x:Name="PromptText" TextWrapping="Wrap" Margin="0,0,0,8" />
+    <TextBox x:Name="SqlBox" IsReadOnly="True" FontFamily="Consolas" FontSize="13"
+             TextWrapping="Wrap" MinHeight="40" MaxHeight="160" Padding="4,3"
+             VerticalScrollBarVisibility="Auto" AutomationProperties.Name="SQL" />
+
+    <Separator Margin="0,12,0,12" />
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button x:Name="OkButton" Click="OnOkClick" />
+      <Button x:Name="CancelButton" Margin="6,0,0,0" IsCancel="True" IsDefault="True" Content="{x:Static res:Strings.ButtonCancel}" />
+    </StackPanel>
+  </StackPanel>
+</platformUi:DialogWindow>

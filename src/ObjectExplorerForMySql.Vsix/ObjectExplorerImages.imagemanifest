@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Own images of the extension. Visual Studio finds this file in the extension folder; the grey (#424242) parts are
+     inverted in the dark theme. Source drawings: Resources\Images\*.svg. -->
+<ImageManifest xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
+  <Symbols>
+    <String Name="Images" Value="/ObjectExplorerForMySql;component/Resources/Images" />
+    <Guid Name="ObjectExplorerImages" Value="{8d3c6f5e-2a41-4b7e-9c15-6e0f4a7b3d92}" />
+    <ID Name="Explain" Value="1" />
+    <ID Name="ExplainAnalyze" Value="2" />
+  </Symbols>
+  <Images>
+    <Image Guid="$(ObjectExplorerImages)" ID="$(Explain)">
+      <Source Uri="$(Images)/Explain.16.png">
+        <Size Value="16" />
+      </Source>
+      <Source Uri="$(Images)/Explain.24.png">
+        <Size Value="24" />
+      </Source>
+      <Source Uri="$(Images)/Explain.32.png">
+        <Size Value="32" />
+      </Source>
+    </Image>
+    <Image Guid="$(ObjectExplorerImages)" ID="$(ExplainAnalyze)">
+      <Source Uri="$(Images)/ExplainAnalyze.16.png">
+        <Size Value="16" />
+      </Source>
+      <Source Uri="$(Images)/ExplainAnalyze.24.png">
+        <Size Value="24" />
+      </Source>
+      <Source Uri="$(Images)/ExplainAnalyze.32.png">
+        <Size Value="32" />
+      </Source>
+    </Image>
+  </Images>
+</ImageManifest>

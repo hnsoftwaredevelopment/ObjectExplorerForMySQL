@@ -1,0 +1,140 @@
+<UserControl x:Class="ObjectExplorerForMySql.ToolWindows.ActivityMonitorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vsui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:res="clr-namespace:ObjectExplorerForMySql.Resources"
+             xmlns:local="clr-namespace:ObjectExplorerForMySql.ToolWindows"
+             xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+             xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+             Background="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+             Foreground="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowTextBrushKey}}">
+  <UserControl.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    <local:SingleLineConverter x:Key="SingleLine" />
+    <Style x:Key="BarButton" TargetType="Button">
+      <Setter Property="Focusable" Value="False" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarTextActiveBrushKey}}" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Bd" Background="Transparent" Padding="3" Margin="0,0,2,0">
+              <ContentPresenter VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarMouseOverBackgroundBeginBrushKey}}" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Bd" Property="Opacity" Value="0.35" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style TargetType="TextBlock">
+      <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="CheckBox">
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="Margin" Value="10,0,0,0" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarTextActiveBrushKey}}" />
+    </Style>
+    <Style x:Key="GridHeader" TargetType="DataGridColumnHeader">
+      <Setter Property="Background" Value="{DynamicResource {x:Static vsui:HeaderColors.DefaultBrushKey}}" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:HeaderColors.DefaultTextBrushKey}}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}" />
+      <Setter Property="BorderThickness" Value="0,0,1,1" />
+      <Setter Property="Padding" Value="4,2" />
+    </Style>
+    <Style x:Key="GridCell" TargetType="DataGridCell">
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="4,1" />
+      <Style.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter Property="Background" Value="{DynamicResource {x:Static vsui:TreeViewColors.SelectedItemActiveBrushKey}}" />
+          <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:TreeViewColors.SelectedItemActiveTextBrushKey}}" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <!-- A session in Sleep is grey: it waits for its client and runs nothing. -->
+    <Style x:Key="GridRow" TargetType="DataGridRow">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding IsSleeping}" Value="True">
+          <Setter Property="Foreground" Value="{DynamicResource {x:Static vsui:EnvironmentColors.SystemGrayTextBrushKey}}" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Resources>
+
+  <!-- Activity monitor (US-1501): toolbar, error line, sessions. -->
+  <DockPanel>
+    <DockPanel DockPanel.Dock="Top" Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarGradientBeginBrushKey}}">
+      <StackPanel Orientation="Horizontal" Margin="4,3">
+        <Button Style="{StaticResource BarButton}" Click="OnRefresh" ToolTip="{x:Static res:Strings.ActivityRefresh}" AutomationProperties.Name="{x:Static res:Strings.ActivityRefresh}">
+          <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Refresh}" />
+        </Button>
+        <Border Width="1" Margin="6,2" Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarToolBarSeparatorBrushKey}}" />
+        <Button x:Name="KillQueryButton" Style="{StaticResource BarButton}" Click="OnKillQuery" IsEnabled="False" AutomationProperties.Name="{x:Static res:Strings.ActivityKillQueryPlain}">
+          <StackPanel Orientation="Horizontal">
+            <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.StopQuery}" />
+            <TextBlock Margin="4,0,0,0" Text="{x:Static res:Strings.ActivityKillQueryPlain}" />
+          </StackPanel>
+        </Button>
+        <Button x:Name="KillConnectionButton" Style="{StaticResource BarButton}" Click="OnKillConnection" IsEnabled="False" AutomationProperties.Name="{x:Static res:Strings.ActivityKillConnectionPlain}">
+          <StackPanel Orientation="Horizontal">
+            <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.TerminateProcess}" />
+            <TextBlock Margin="4,0,0,0" Text="{x:Static res:Strings.ActivityKillConnectionPlain}" />
+          </StackPanel>
+        </Button>
+        <Border Width="1" Margin="6,2" Background="{DynamicResource {x:Static vsui:EnvironmentColors.CommandBarToolBarSeparatorBrushKey}}" />
+        <CheckBox Content="{x:Static res:Strings.ActivityAutoRefresh}" IsChecked="{Binding AutoRefresh}" />
+        <CheckBox Content="{x:Static res:Strings.ActivityHideSleeping}" IsChecked="{Binding HideSleeping}" />
+        <TextBlock Margin="12,0,0,0" Text="{Binding Summary}" />
+      </StackPanel>
+    </DockPanel>
+
+    <TextBlock DockPanel.Dock="Top" Margin="8,4" TextWrapping="Wrap" Text="{Binding Error}"
+               Visibility="{Binding HasError, Converter={StaticResource BoolToVisibility}}" />
+
+    <DataGrid x:Name="Grid"
+              AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"
+              CanUserSortColumns="True" CanUserReorderColumns="True" CanUserResizeColumns="True"
+              SelectionMode="Single" SelectionUnit="FullRow" HeadersVisibility="Column" GridLinesVisibility="All"
+              EnableRowVirtualization="True" VirtualizingPanel.VirtualizationMode="Recycling"
+              BorderThickness="0"
+              ColumnHeaderStyle="{StaticResource GridHeader}" CellStyle="{StaticResource GridCell}" RowStyle="{StaticResource GridRow}"
+              Background="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+              RowBackground="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+              Foreground="{DynamicResource {x:Static vsui:EnvironmentColors.ToolWindowTextBrushKey}}"
+              HorizontalGridLinesBrush="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}"
+              VerticalGridLinesBrush="{DynamicResource {x:Static vsui:HeaderColors.SeparatorLineBrushKey}}"
+              ItemsSource="{Binding Sessions}"
+              SelectionChanged="OnSelectionChanged">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnId}" Binding="{Binding Id}" />
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnUser}" Binding="{Binding User}" />
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnHost}" Binding="{Binding Host}" />
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnDatabase}" Binding="{Binding Database}" />
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnCommand}" Binding="{Binding Command}" />
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnTime}" Binding="{Binding Time}" />
+        <DataGridTextColumn Header="{x:Static res:Strings.ActivityColumnState}" Binding="{Binding State}" MaxWidth="260" />
+        <DataGridTemplateColumn Header="{x:Static res:Strings.ActivityColumnStatement}" Width="*" MinWidth="200" SortMemberPath="Statement">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Statement, Converter={StaticResource SingleLine}}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Statement}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+      <DataGrid.ContextMenu>
+        <ContextMenu>
+          <MenuItem x:Name="KillQueryMenuItem" Header="{x:Static res:Strings.ActivityKillQuery}" Click="OnKillQuery" />
+          <MenuItem x:Name="KillConnectionMenuItem" Header="{x:Static res:Strings.ActivityKillConnection}" Click="OnKillConnection" />
+          <Separator />
+          <MenuItem x:Name="CopyStatementMenuItem" Header="{x:Static res:Strings.ActivityCopyStatement}" Click="OnCopyStatement" />
+        </ContextMenu>
+      </DataGrid.ContextMenu>
+    </DataGrid>
+  </DockPanel>
+</UserControl>

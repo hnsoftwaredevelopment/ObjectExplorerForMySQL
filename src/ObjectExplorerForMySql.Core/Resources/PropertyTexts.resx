@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Texts of the Visual Studio Properties window (E04). Neutral = English (ADR-005, ADR-010). -->
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Object types (header of the Properties window) -->
+  <data name="TypeColumn" xml:space="preserve"><value>Column</value></data>
+  <data name="TypeTable" xml:space="preserve"><value>Table</value></data>
+  <data name="TypeView" xml:space="preserve"><value>View</value></data>
+
+  <!-- Categories -->
+  <data name="CategoryGeneral" xml:space="preserve"><value>General</value></data>
+  <data name="CategoryDataType" xml:space="preserve"><value>Data Type</value></data>
+  <data name="CategoryDescription" xml:space="preserve"><value>Description</value></data>
+  <data name="CategoryConnection" xml:space="preserve"><value>Connection</value></data>
+
+  <!-- Properties -->
+  <data name="PropNullable" xml:space="preserve"><value>Nullable</value></data>
+  <data name="PropPrimaryKey" xml:space="preserve"><value>Primary Key</value></data>
+  <data name="PropForeignKey" xml:space="preserve"><value>Foreign Key</value></data>
+  <data name="PropDefault" xml:space="preserve"><value>Default</value></data>
+  <data name="PropAutoIncrement" xml:space="preserve"><value>Auto Increment</value></data>
+  <data name="PropIsGenerated" xml:space="preserve"><value>Is Generated</value></data>
+  <data name="PropGenerationExpression" xml:space="preserve"><value>Generation Expression</value></data>
+  <data name="PropDataType" xml:space="preserve"><value>Data Type</value></data>
+  <data name="PropLength" xml:space="preserve"><value>Length</value></data>
+  <data name="PropPrecision" xml:space="preserve"><value>Precision</value></data>
+  <data name="PropScale" xml:space="preserve"><value>Scale</value></data>
+  <data name="PropUnsigned" xml:space="preserve"><value>Unsigned</value></data>
+  <data name="PropCharacterSet" xml:space="preserve"><value>Character Set</value></data>
+  <data name="PropCollation" xml:space="preserve"><value>Collation</value></data>
+  <data name="PropName" xml:space="preserve"><value>Name</value></data>
+  <data name="PropParent" xml:space="preserve"><value>Parent</value></data>
+  <data name="PropParentType" xml:space="preserve"><value>Parent Type</value></data>
+  <data name="PropDatabase" xml:space="preserve"><value>Database</value></data>
+  <data name="PropComment" xml:space="preserve"><value>Comment</value></data>
+  <data name="PropOrdinalPosition" xml:space="preserve"><value>Ordinal Position</value></data>
+  <data name="PropConnectionName" xml:space="preserve"><value>Connection Name</value></data>
+  <data name="PropServer" xml:space="preserve"><value>Server</value></data>
+  <data name="PropPort" xml:space="preserve"><value>Port</value></data>
+  <data name="PropUser" xml:space="preserve"><value>User</value></data>
+
+  <!-- US-0402: object types -->
+  <data name="TypeServer" xml:space="preserve"><value>MySQL Server</value></data>
+  <data name="TypeDatabase" xml:space="preserve"><value>Database</value></data>
+  <data name="TypeIndex" xml:space="preserve"><value>Index</value></data>
+  <data name="TypePrimaryKey" xml:space="preserve"><value>Primary Key</value></data>
+  <data name="TypeUniqueKey" xml:space="preserve"><value>Unique Key</value></data>
+  <data name="TypeForeignKey" xml:space="preserve"><value>Foreign Key</value></data>
+  <data name="TypeCheckConstraint" xml:space="preserve"><value>Check Constraint</value></data>
+  <data name="TypeTrigger" xml:space="preserve"><value>Trigger</value></data>
+  <data name="TypeStoredProcedure" xml:space="preserve"><value>Stored Procedure</value></data>
+  <data name="TypeFunction" xml:space="preserve"><value>Function</value></data>
+  <data name="TypeParameter" xml:space="preserve"><value>Parameter</value></data>
+  <data name="TypeEvent" xml:space="preserve"><value>Event</value></data>
+
+  <!-- US-0402: categories -->
+  <data name="CategoryStorage" xml:space="preserve"><value>Storage</value></data>
+
+  <!-- US-0402: connection states (server) -->
+  <data name="StateNotConnected" xml:space="preserve"><value>Not connected</value></data>
+  <data name="StateConnecting" xml:space="preserve"><value>Connecting</value></data>
+  <data name="StateConnected" xml:space="preserve"><value>Connected</value></data>
+  <data name="StateError" xml:space="preserve"><value>Error</value></data>
+
+  <!-- US-0402: properties -->
+  <data name="PropVersion" xml:space="preserve"><value>Version</value></data>
+  <data name="PropTimeZone" xml:space="preserve"><value>Time Zone</value></data>
+  <data name="PropState" xml:space="preserve"><value>State</value></data>
+  <data name="PropAuthenticatedAs" xml:space="preserve"><value>Authenticated As</value></data>
+  <data name="PropSslMode" xml:space="preserve"><value>SSL Mode</value></data>
+  <data name="PropSslInUse" xml:space="preserve"><value>SSL In Use</value></data>
+  <data name="PropSslCipher" xml:space="preserve"><value>SSL Cipher</value></data>
+  <data name="PropDefaultDatabase" xml:space="preserve"><value>Default Database</value></data>
+  <data name="PropCanReadUsers" xml:space="preserve"><value>Can Read Users</value></data>
+  <data name="PropCanManageUsers" xml:space="preserve"><value>Can Manage Users</value></data>
+  <!-- US-1002: users and roles -->
+  <data name="TypeUser" xml:space="preserve"><value>User</value></data>
+  <data name="TypeRole" xml:space="preserve"><value>Role</value></data>
+  <data name="PropUserName" xml:space="preserve"><value>User Name</value></data>
+  <data name="PropHost" xml:space="preserve"><value>Host</value></data>
+  <data name="PropAuthenticationPlugin" xml:space="preserve"><value>Authentication Plugin</value></data>
+  <data name="PropAccountLocked" xml:space="preserve"><value>Account Locked</value></data>
+  <data name="PropPasswordExpired" xml:space="preserve"><value>Password Expired</value></data>
+  <data name="PropPasswordLastChanged" xml:space="preserve"><value>Password Last Changed</value></data>
+  <data name="PropPasswordLifetime" xml:space="preserve"><value>Password Lifetime (days)</value></data>
+  <data name="PropTableCount" xml:space="preserve"><value>Tables</value></data>
+  <data name="PropSystemDatabase" xml:space="preserve"><value>System Database</value></data>
+  <data name="PropEngine" xml:space="preserve"><value>Engine</value></data>
+  <data name="PropRowFormat" xml:space="preserve"><value>Row Format</value></data>
+  <data name="PropAutoIncrementValue" xml:space="preserve"><value>Next Auto Increment</value></data>
+  <data name="PropEstimatedRows" xml:space="preserve"><value>Estimated Rows</value></data>
+  <data name="PropDataLength" xml:space="preserve"><value>Data Size</value></data>
+  <data name="PropIndexLength" xml:space="preserve"><value>Index Size</value></data>
+  <data name="PropCreated" xml:space="preserve"><value>Created</value></data>
+  <data name="PropUpdated" xml:space="preserve"><value>Last Data Change</value></data>
+  <data name="PropModified" xml:space="preserve"><value>Modified</value></data>
+  <data name="PropIsUpdatable" xml:space="preserve"><value>Is Updatable</value></data>
+  <data name="PropSecurityType" xml:space="preserve"><value>Security Type</value></data>
+  <data name="PropDefiner" xml:space="preserve"><value>Definer</value></data>
+  <data name="PropCheckOption" xml:space="preserve"><value>Check Option</value></data>
+  <data name="PropTable" xml:space="preserve"><value>Table</value></data>
+  <data name="PropUnique" xml:space="preserve"><value>Unique</value></data>
+  <data name="PropIndexType" xml:space="preserve"><value>Index Type</value></data>
+  <data name="PropVisible" xml:space="preserve"><value>Visible</value></data>
+  <data name="PropColumns" xml:space="preserve"><value>Columns</value></data>
+  <data name="PropKeyType" xml:space="preserve"><value>Key Type</value></data>
+  <data name="PropReferencedTable" xml:space="preserve"><value>Referenced Table</value></data>
+  <data name="PropReferencedColumns" xml:space="preserve"><value>Referenced Columns</value></data>
+  <data name="PropOnUpdate" xml:space="preserve"><value>On Update</value></data>
+  <data name="PropOnDelete" xml:space="preserve"><value>On Delete</value></data>
+  <data name="PropExpression" xml:space="preserve"><value>Expression</value></data>
+  <data name="PropEnforced" xml:space="preserve"><value>Enforced</value></data>
+  <data name="PropTiming" xml:space="preserve"><value>Timing</value></data>
+  <data name="PropEvent" xml:space="preserve"><value>Event</value></data>
+  <data name="PropActionOrder" xml:space="preserve"><value>Action Order</value></data>
+  <data name="PropReturns" xml:space="preserve"><value>Returns</value></data>
+  <data name="PropDeterministic" xml:space="preserve"><value>Deterministic</value></data>
+  <data name="PropSqlDataAccess" xml:space="preserve"><value>SQL Data Access</value></data>
+  <data name="PropMode" xml:space="preserve"><value>Mode</value></data>
+  <data name="PropRoutine" xml:space="preserve"><value>Routine</value></data>
+  <data name="PropStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="PropSchedule" xml:space="preserve"><value>Schedule</value></data>
+  <data name="PropStarts" xml:space="preserve"><value>Starts</value></data>
+  <data name="PropEnds" xml:space="preserve"><value>Ends</value></data>
+  <data name="PropOnCompletion" xml:space="preserve"><value>On Completion</value></data>
+  <data name="PropLastExecuted" xml:space="preserve"><value>Last Executed</value></data>
+</root>

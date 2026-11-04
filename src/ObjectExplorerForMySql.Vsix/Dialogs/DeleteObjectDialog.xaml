@@ -1,0 +1,45 @@
+<platformUi:DialogWindow x:Class="ObjectExplorerForMySql.Dialogs.DeleteObjectDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+                         xmlns:res="clr-namespace:ObjectExplorerForMySql.Resources"
+                         Width="520"
+                         SizeToContent="Height"
+                         ResizeMode="NoResize"
+                         WindowStartupLocation="CenterOwner"
+                         ShowInTaskbar="False"
+                         HasMinimizeButton="False"
+                         HasMaximizeButton="False"
+                         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                         Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}">
+  <platformUi:DialogWindow.Resources>
+    <Style TargetType="Button">
+      <Setter Property="MinWidth" Value="80" />
+      <Setter Property="Padding" Value="10,2" />
+    </Style>
+  </platformUi:DialogWindow.Resources>
+
+  <!-- US-0901: the exact SQL that runs, read-only. A database also needs its name typed. -->
+  <StackPanel Margin="12">
+    <TextBlock x:Name="PromptText" TextWrapping="Wrap" Margin="0,0,0,8" />
+
+    <TextBox Text="{Binding Sql, Mode=OneWay}" IsReadOnly="True" FontFamily="Consolas" FontSize="13"
+             TextWrapping="Wrap" MinHeight="48" MaxHeight="160" Padding="4,3"
+             VerticalScrollBarVisibility="Auto" AutomationProperties.Name="SQL" />
+    <Button HorizontalAlignment="Left" Margin="0,6,0,0" Content="{x:Static res:Strings.ButtonCopySql}" Click="OnCopyClick" />
+
+    <StackPanel x:Name="NamePanel" Margin="0,12,0,0" Visibility="Collapsed">
+      <!-- TextBlock, not Label: an underscore in a database name must not become an access key. -->
+      <TextBlock x:Name="NameLabel" TextWrapping="Wrap" Margin="0,0,0,4" />
+      <TextBox x:Name="NameBox" Padding="2,1" Text="{Binding TypedName, UpdateSourceTrigger=PropertyChanged}"
+               AutomationProperties.LabeledBy="{Binding ElementName=NameLabel}" />
+    </StackPanel>
+
+    <Separator Margin="0,12,0,12" />
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button x:Name="DeleteButton" Content="{x:Static res:Strings.ButtonDelete}" IsEnabled="{Binding CanDelete}" Click="OnDeleteClick" />
+      <Button x:Name="CancelButton" Margin="6,0,0,0" IsCancel="True" IsDefault="True" Content="{x:Static res:Strings.ButtonCancel}" />
+    </StackPanel>
+  </StackPanel>
+</platformUi:DialogWindow>
